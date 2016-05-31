@@ -1,6 +1,7 @@
 body {
   padding-top: 80px;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   font-size: 15px;
   line-height: 1.7em;
   background-color: #f9f9f9;
@@ -11,11 +12,11 @@ a, a:hover, a:focus {
   background-color: transparent;
 }
 a:focus {
-  outline: 1px dotted #CCC;
+  outline: 1px dotted rgba(0,0,0,0.2);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Helvetica, sans-serif;
+  font-family: helvetica neue, Helvetica, sans-serif;
   color: #777;
   font-weight: 300;
   margin: 0.67em 0;
@@ -37,29 +38,53 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 -------------------------------*/
 
 .navbar-default {
-  background-color: #FFF;
-  border-color: rgba(0,0,0,0.1);
-  outline: 1px solid rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.75);
+  background: linear-gradient(45deg, #3f4476 0%,#6f75a0 100%);
+  border-color: rgba(0,0,0,0.2);
+  outline: 1px solid rgba(0,0,0,0.1);
   padding: 15px 0;
+}
+
+.index-page .navbar-default {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.05);
+  outline: 1px solid rgba(0,0,0,0.05);
 }
 
 .navbar-default .navbar-nav > li > a {
   text-transform: uppercase;
-  color: #BBB;
+  color: #EEE;
   font-size: 13px;
   font-weight: 300;
 }
 
 .navbar-default .navbar-nav > li.active > a {
-  color: #000;
+  color: #FFF;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  color: #FFF;
   background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #EEE;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.navbar-default a:focus {
+  outline: 1px dotted rgba(255,255,255,0.2);
 }
 
 .navbar-toggle {
   /*border-color: #DDD !important;*/
+}
+
+.navbar-links {
+  float: right;
 }
 
 .navbar-toggle:hover,
@@ -78,14 +103,16 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 }
 
 .navbar-brand span {
-  font-size: 23px;
-  color: #000 !important;
+  font-size: 20px;
+  color: #DDD !important;
   font-weight: 300;
+  text-transform: uppercase;
 }
 
 .navbar-brand i {
+  color: #FFF !important;
   margin-right: 10px;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 /*-------------------------------
@@ -177,29 +204,41 @@ pre {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  /*background-color: #6A5094;*/
-  /*color: #FFF;*/
+  background: linear-gradient(45deg, #3d4375 0%,#797fab 100%);
+  color: #EEE;
   text-align: center;
   position: absolute;
   left: 0;
   right: 0;
-  border-bottom: 1px solid #DDD;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  margin-top: -80px;
+  padding-top: 140px;
 }
 
 .jumbotron h1 {
+  color: #FFF;
   font-size: 60px;
   line-height: 1;
   margin-bottom: 1em;
+  font-weight: 100;
+  font-family: helvetica neue, Helvetica, sans-serif;
+  letter-spacing: 9px;
+  text-shadow: 0 0 10px #fff;
 }
 
 .jumbotron .lead {
   font-size: 24px;
   line-height: 1.25;
+  font-weight: 100;
+  font-family: helvetica neue, Helvetica, sans-serif;
 }
 
 .jumbotron .btn {
-  font-size: 21px;
   padding: 14px 24px;
+  background-color: #6970A7;
+  border-color: #4F557D
 }
 
 /* Supporting marketing content */
@@ -212,5 +251,14 @@ pre {
 }
 
 .features {
-  margin-top: 420px;
+  margin-top: 380px;
+}
+
+.features strong {
+  font-weight: 400;
+}
+
+.features h4 {
+  font-weight: 400;
+  margin-bottom: 25px;
 }

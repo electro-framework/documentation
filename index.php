@@ -23,7 +23,6 @@ require 'markdown.php'
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
 
-  <body>
     <?php $path =
       isset($_SERVER['REDIRECT_PATH'])
         ? $_SERVER['REDIRECT_PATH']
@@ -40,6 +39,7 @@ require 'markdown.php'
     $split   = explode ('/', $path);
     $menuDir = $split[1];
     ?>
+  <body class="<?= $menuDir ?>-page">
 
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -53,28 +53,29 @@ require 'markdown.php'
             <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="."><i class="fa fa-pencil"></i><span>doc-kit</span></a>
+          <a class="navbar-brand" href="."><i class="fa fa-sun-o"></i><span>lightwave</span></a>
         </div>
 
-        <div class="collapse navbar-collapse col-md-10" id="navbar-collapsing">
+        <div class="collapse navbar-collapse col-md-10 navbar-links" id="navbar-collapsing">
           <ul class="nav navbar-nav">
             <li<?= $menuDir == 'index' ? ' class="active"' : '' ?>>
               <a href=".">Home</a>
+            </li>
+            <li<?= $menuDir == 'about' ? ' class="active"' : '' ?>>
+              <a href="about">Features</a>
             </li>
             <li<?= $menuDir == 'docs' ? ' class="active"' : '' ?>>
               <a href="docs">Documentation</a>
             </li>
             <li<?= $menuDir == 'download' ? ' class="active"' : '' ?>>
-              <a href="download">Downloads</a>
+              <a href="download">Download</a>
             </li>
             <li<?= $menuDir == 'community' ? ' class="active"' : '' ?>>
               <a href="community">Community</a>
             </li>
-            <li<?= $menuDir == 'support' ? ' class="active"' : '' ?>>
-              <a href="support">Support</a>
-            </li>
-            <li<?= $menuDir == 'about' ? ' class="active"' : '' ?>>
-              <a href="about">About</a>
+            <li>
+              <iframe src="https://ghbtns.com/github-btn.html?user=selenia-framework&repo=selenia&type=star&count=true"
+                      frameborder="0" scrolling="0" width="170px" height="20px" style="margin:15px 0 0 15px"></iframe>
             </li>
           </ul>
         </div>
@@ -138,7 +139,7 @@ require 'markdown.php'
       }
       ?>
       <div class="footer pull-right">
-        &copy; 2016 <a href="#">Someone</a>
+        &copy; 2016 <a href="http://impactwave.com">Impactwave Lda</a> and <a href="http://github.com/claudio-silva">Cláudio Silva</a>
       </div>
     </div>
     <!-- /container -->

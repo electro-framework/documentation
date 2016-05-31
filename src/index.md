@@ -1,13 +1,11 @@
 
   <div class="jumbotron">
-    <h1>doc-kit</h1>
+    <h1>LIGHTWAVE</h1>
 
     <p class="lead">
-      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      A Next-Generation PHP Framework for Building Amazing Web Applications
     </p><br>
-    <a class="btn btn-large btn-warning" href="download">Download</a>
-    <div class="muted">Version 1.0.0 alpha</div>
+    <a class="btn btn-large btn-warning" href="download">Download v1.0.0-beta</a>
   </div>
 
   <hr>
@@ -15,30 +13,46 @@
   <div class="features row-fluid">
 
     <div class="col-md-4" markdown="1">
-## About the project
+#### Amazingly fast and scalable
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+★ Integrated **PHPFastCGI**-enabled *instant-start* app server, capable of handling thousands of requests per second.
 
-<a class="btn" href="about">Find out how &raquo;</a>
+★ It can also run as a conventional and universally compatible PHP application that can be deployed to any hosting provider.
+
+★ It can run your apps either way with absolutely **no code changes**.
+
+★ Accelerate it even more by using the built-in multi-level caching support, PHP's native opcode cache and pre-assembled optimized code loaders.
+
+<a class="btn" href="#">Find out how &raquo;</a>
   </div>
 
   <div class="col-md-4" markdown="1">
-## Documentation
+#### Modern architecture
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+★ Elegant and expressive APIs that take advantage of the latest PHP language features.
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+★ Plug&play, down to the core, fully modular architecture provides endless flexibility and extensibility.
 
-<a class="btn" href="docs">Read the docs &raquo;</a>
+★ S.O.L.I.D. design, fully dependency-injected codebase.
+
+★ No singletons, no facades, no service locators, but still focused on easiness and convenience.
+
+★ State of the art PSR-7/14 compliant, middleware-based HTTP pipeline and deep Composer integration provide easy interoperability with many libraries and frameworks.
+
+<a class="btn" href="#">More features &raquo;</a>
   </div>
 
   <div class="col-md-4" markdown="1">
-## Community
+#### Superior development experience
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
- 
-Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+★ Extensively documented, statically typed and refactor-friendly code.
 
-<a class="btn" href="download">GitHub project &raquo;</a>
+★ Full autocompletion and code analysis support for IDEs (works amazingly with PHPStorm).
+
+★ Code generators for rapidly scaffolding modules, controllers, views, models and many other application components.
+
+★ Sophisticated web debugging console with enhanced logging, extensive introspection and *click-to-edit-on-IDE* capabilities, makes tracking and solving errors a breeze.
+
+<a class="btn" href="#">Want to know more? &raquo;</a>
   </div>
 </div>
