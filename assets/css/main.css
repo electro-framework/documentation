@@ -4,7 +4,7 @@ body {
   font-weight: 300;
   font-size: 15px;
   line-height: 1.7em;
-  background-color: #f9f9f9;
+  background-color: #FFF;
 }
 
 a, a:hover, a:focus {
@@ -38,41 +38,53 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 -------------------------------*/
 
 .navbar-default {
-  background: rgba(0,0,0,0.75);
-  background: linear-gradient(45deg, #3f4476 0%,#6f75a0 100%);
-  border-color: rgba(0,0,0,0.2);
-  outline: 1px solid rgba(0,0,0,0.1);
+  /*background: rgba(0,0,0,0.7);*/
+  /*background: linear-gradient(45deg, #3f4476 0%,#6f75a0 100%);*/
+  /*background: linear-gradient(-45deg, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.8) 100%);*/
+  background: #FFF;
+  border: 1px solid #EEE;
+  outline: none;
   padding: 15px 0;
+  color: #666;
 }
 
 .index-page .navbar-default {
-  background: rgba(0,0,0,0.05);
-  border-color: rgba(0,0,0,0.05);
-  outline: 1px solid rgba(0,0,0,0.05);
+  background: transparent;
+  outline: none;
+  border: none;
+  /*background: rgba(0,0,0,0.05);*/
+  /*border-color: rgba(0,0,0,0.05);*/
+  /*outline: 1px solid rgba(0,0,0,0.05);*/
+  color: rgba(255,255,255,0.6);
 }
 
 .navbar-default .navbar-nav > li > a {
   text-transform: uppercase;
-  color: #EEE;
+  color: inherit;
   font-size: 13px;
   font-weight: 300;
 }
 
 .navbar-default .navbar-nav > li.active > a {
+  font-weight: 600;
+}
+
+.index-page .navbar-default .navbar-nav > li.active > a {
   color: #FFF;
+  font-weight: inherit;
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-  color: #FFF;
+  color: inherit;
   background-color: transparent;
 }
 
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
-  color: #EEE;
+  color: inherit;
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 .navbar-default a:focus {
@@ -104,15 +116,22 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 
 .navbar-brand span {
   font-size: 20px;
-  color: #DDD !important;
+  color: #666;
   font-weight: 300;
   text-transform: uppercase;
 }
+.index-page .navbar-brand span {
+  color: #DDD;
+}
 
 .navbar-brand i {
-  color: #FFF !important;
+  color: #666;
   margin-right: 10px;
   font-size: 20px;
+}
+
+.index-page .navbar-brand i {
+  color: #DDD;
 }
 
 /*-------------------------------
@@ -158,9 +177,10 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 -------------------------------*/
 
 .page {
-  padding: 40px 30px 90px 30px;
-  background-color: #FFF;
-  border: 1px solid #e7e7e7;
+  padding: 40px 0 90px 30px;
+  /*background-color: #FFF;*/
+  /*border: 1px solid #e7e7e7;*/
+  border-left: 1px solid #EEE;
   text-align: justify;
 }
 
@@ -177,16 +197,16 @@ pre {
 @media (max-width: 767px) {
 
   .page {
-    padding-left: 0;
-    padding-right: 0;
+    /*padding-left: 0;*/
+    /*padding-right: 0;*/
   }
 }
 
 @media (min-width: 1200px) {
 
   .page {
-    padding-left: 0;
-    padding-right: 0;
+    /*padding-left: 0;*/
+    /*padding-right: 0;*/
   }
 }
 

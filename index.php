@@ -1,5 +1,6 @@
 <?php
-require 'markdown.php'
+require 'markdown.php';
+  const APP_NAME = 'LIGHTWAVE';
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +54,7 @@ require 'markdown.php'
             <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="."><i class="fa fa-sun-o"></i><span>lightwave</span></a>
+          <a class="navbar-brand" href="."><i class="fa fa-sun-o"></i><span><?=APP_NAME?></span></a>
         </div>
 
         <div class="collapse navbar-collapse col-md-10 navbar-links" id="navbar-collapsing">
@@ -108,24 +109,26 @@ require 'markdown.php'
         ], $src);
       }
 
+      $NOT_FOUND = "<div class=row><div class='page col-md-12'><code>$path</code> was not found.</div></div>";
+
       if ($menuDir == 'docs') {
         $subPath = substr ($path, 6);
         if ($subPath == '')
           $subPath = 'index';
         $file    = __DIR__ . "/src/docs/$subPath.md";
-        $content = file_exists ($file) ? navMenu (compileMD (file_get_contents ($file))) : "<code>$path</code> was not found.";
+        $content = file_exists ($file) ? navMenu (compileMD (file_get_contents ($file))) : $NOT_FOUND;
         ?>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-3">
             <div class="sidebar-nav">
               <?= navMenu (compileMD (file_get_contents ('src/docs/menu.md', FILE_USE_INCLUDE_PATH))) ?>
             </div>
             <!--/.well -->
           </div>
           <!--/span-->
-          <div class="page col-md-10">
+          <div class="page col-md-9">
             <div class="container-fluid">
-              <div class="content col-md-offset0 col-lg-offset-1 col-md-12 col-lg-10">
+              <div class="content col-md-12 col-lg-12">
                 <?= $content ?>
               </div>
             </div>
@@ -135,7 +138,7 @@ require 'markdown.php'
       }
       else {
         $file = __DIR__ . "/src$path.md";
-        echo file_exists ($file) ? compileMD (file_get_contents ($file)) : "<code>$path</code> was not found.";
+        echo file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
       }
       ?>
       <div class="footer pull-right">
