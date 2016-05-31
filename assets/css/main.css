@@ -7,6 +7,10 @@ body {
   background-color: #FFF;
 }
 
+[contenteditable]:focus {
+  outline: none;
+}
+
 a, a:hover, a:focus {
   color: #C00;
   background-color: transparent;

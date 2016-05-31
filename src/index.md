@@ -1,5 +1,5 @@
 
-  <div class="jumbotron">
+  <div class="jumbotron" contenteditable>
     <h1>LIGHTWAVE</h1>
 
     <p class="lead">
@@ -10,7 +10,7 @@
 
   <hr>
 
-  <div class="features row-fluid">
+  <div class="features row-fluid" contenteditable>
 
     <div class="col-md-4" markdown="1">
 #### Amazingly fast and scalable
