@@ -3,7 +3,10 @@
     <h1>LIGHTWAVE</h1>
 
     <p class="lead">
-      A Next-Generation PHP Framework for Building Amazing Web Applications
+      A Next-Generation PHP Framework
+    </p>
+    <p class="lead">
+      for Building Amazing Web Applications
     </p><br>
     <a class="btn btn-large btn-warning" href="download">Download v1.0.0-beta</a>
   </div>

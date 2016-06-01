@@ -1,9 +1,9 @@
 body {
   padding-top: 80px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   font-weight: 300;
   font-size: 15px;
-  line-height: 1.7em;
+  line-height: 1.5em;
   background-color: #FFF;
 }
 
@@ -11,8 +11,21 @@ body {
   outline: none;
 }
 
+blockquote {
+  border-right: 1px solid #FAEBCC;
+  border-top: 1px solid #FAEBCC;
+  border-bottom: 1px solid #FAEBCC;
+  border-left: 8px solid #FAEBCC;
+  background-color: #fcf8e3;
+  font-size: 13px;
+}
+
+code {
+  font-size: inherit;
+}
+
 a, a:hover, a:focus {
-  color: #C00;
+  color: #008cb3;
   background-color: transparent;
 }
 a:focus {
@@ -20,21 +33,31 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: helvetica neue, Helvetica, sans-serif;
-  color: #777;
-  font-weight: 300;
-  margin: 0.67em 0;
+  /*font-family: helvetica neue, Helvetica, sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+  font-weight: 500;
+  margin: 1em 0 1em;
+}
+
+h1, h2 {
+  color: #555;
 }
 
 /* When scrollingg to anchors, offset the anchor from the page top by X pixels */
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
   margin-top: -90px;
-  padding-top: 120px;
+  padding-top: calc(90px + 1em);
 }
 
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
   margin-top: 0;
   padding-top: 0;
+}
+
+h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
+h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
+  padding-top: 90px !important;
 }
 
 /*-------------------------------
@@ -48,8 +71,9 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
   background: #FFF;
   border: 1px solid #EEE;
   outline: none;
-  padding: 15px 0;
+  padding: 5px 0;
   color: #666;
+  border-top: 10px solid #7278a1;
 }
 
 .index-page .navbar-default {
@@ -60,6 +84,7 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
   /*border-color: rgba(0,0,0,0.05);*/
   /*outline: 1px solid rgba(0,0,0,0.05);*/
   color: rgba(255,255,255,0.6);
+  padding-top: 15px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -144,12 +169,17 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 
 .sidebar-nav {
   margin: 38px 0 30px;
-  line-height: 1.4em;
+  line-height: 1.2em;
 }
 
 .sidebar-nav h4 {
   margin: 17px 15px 12px 0;
   cursor: default;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #444;
+  font-size: 14px;
+  font-family: 'Exo 2', sans-serif;
   padding-bottom: 10px;
   border-bottom: 1px dashed #DDD;
 }
@@ -160,7 +190,7 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 
 .sidebar-nav li > a {
   padding: 2px 0;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .sidebar-nav li > a:hover,
@@ -192,10 +222,68 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
   margin: 20px 0;
 }
 
-pre {
-  border: none;
+:not(pre) > code {
+  color: #D45959;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  background: transparent;
   padding: 0;
-  margin: 20px 0;
+}
+
+pre {
+  /*border: 1px solid #EEE;*/
+  border: none;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 2.25em 0 !important;
+  border-radius: 0;
+  background: #F8F8F8 !important;
+}
+
+blockquote pre {
+  margin: 0 !important;
+}
+
+code[class*=language-] .line-numbers-rows, pre[class*=language-] .line-numbers-rows {
+  background: #f0f2f1;
+  padding: 15px 0;
+  top: -18px;
+  line-height: 1.5;
+  width: 3em;
+}
+
+pre[class*=language-] {
+  padding-left: 4.5em !important;
+}
+
+.line-numbers-rows {
+  border-right-color: #e8e8e8 !important;
+  left: -4.5em !important;
+}
+
+.line-numbers-rows>span:before {
+  content: counter(linenumber);
+  color: #BBB !important;
+  display: block;
+  padding-right: .8em;
+  text-align: right;
+}
+
+/* Language label */
+pre[lang]:before {
+  content: attr(lang);
+  color: #aaa;
+  background-color: #f0f2f1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.8em;
+  /*border-radius: 0 0 0 5px;*/
+  padding: 2px 0.7em 0;
+  border: 1px solid #e8e8e8;
+  text-shadow: none;
+  z-index: 1;
 }
 
 @media (max-width: 767px) {
@@ -275,7 +363,7 @@ pre {
 }
 
 .features {
-  margin-top: 380px;
+  margin-top: 400px;
 }
 
 .features strong {

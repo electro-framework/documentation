@@ -1,12 +1,33 @@
 #### Introduction
 
-- [Introduction](docs)
-- [Getting started](docs/demo)
+- [About the Framework](docs)
+- [Release Notes](docs)
 
-#### Chapter 1
+#### Setup
 
-- [Article 1](docs/#)
+- [Installation](docs/getting-started)
+- [Demo](docs/demo)
 
-#### Chapter 2
+#### The Basics
 
-- [Article 1](docs/#)
+- [Modules](docs/#)
+- [Requests and Responses](docs/#)
+- [Routing](docs/#)
+- [Middleware](docs/#)
+- [Controllers](docs/#)
+- [Views](docs/#)
+- [Models](docs/#)
+
+#### Architecture
+
+- [Request Lifecycle](docs/#)
+- [Folder Structure](docs/#)
+- [Dependency Injection](docs/#)
+- [Service Providers](docs/#)
+
+#### Services
+
+- [Configuration](docs/#)
+- [ORM](docs/#)
+- [Mail](docs/#)
+- [Validation](docs/#)

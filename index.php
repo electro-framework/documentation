@@ -1,6 +1,14 @@
 <?php
-require 'markdown.php';
-  const APP_NAME = 'LIGHTWAVE';
+require 'lib/Parsedown.php';
+require 'lib/ParsedownExtra.php';
+  const APP_NAME = 'lightwave';
+  /*
+   * Selected options for the Prism plugin:
+   * - Themes: Default
+   * - Languages: Markup, CSS, Javascript, Bash, JSON, Less, PHP, SQL
+   * - Plugins: Line Numbers
+   * Note: the Show Language plugin is not used, but an alternative implementation is provided below.
+   */
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,13 +22,13 @@ require 'markdown.php';
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic'
           rel='stylesheet'
           type='text/css'>
-
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro|Exo+2:300,500,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
           crossorigin="anonymous">
+    <link href="assets/css/prism.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/css/syntax.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
 
@@ -66,7 +74,7 @@ require 'markdown.php';
               <a href="about">Features</a>
             </li>
             <li<?= $menuDir == 'docs' ? ' class="active"' : '' ?>>
-              <a href="docs">Documentation</a>
+              <a href="docs/installation">Documentation</a>
             </li>
             <li<?= $menuDir == 'download' ? ' class="active"' : '' ?>>
               <a href="download">Download</a>
@@ -92,7 +100,8 @@ require 'markdown.php';
 
       function compileMD ($src)
       {
-        $text = Markdown ($src);
+        $parser = new ParsedownExtra;
+        $text = $parser->text ($src);
         $text = preg_replace_callback ('/\{\$(\w+)\}/', function ($m) {
           global $context;
           return $context[$m[1]];
@@ -109,14 +118,14 @@ require 'markdown.php';
         ], $src);
       }
 
-      $NOT_FOUND = "<div class=row><div class='page col-md-12'><code>$path</code> was not found.</div></div>";
+      $NOT_FOUND = "<div class=row><div class='col-md-12'><code>$path</code> was not found.</div></div>";
 
       if ($menuDir == 'docs') {
         $subPath = substr ($path, 6);
         if ($subPath == '')
           $subPath = 'index';
         $file    = __DIR__ . "/src/docs/$subPath.md";
-        $content = file_exists ($file) ? navMenu (compileMD (file_get_contents ($file))) : $NOT_FOUND;
+        $content = file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
         ?>
         <div class="row">
           <div class="col-md-3">
@@ -151,7 +160,15 @@ require 'markdown.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
-    <script src="assets/js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad ();</script>
+    <script>
+      $ ('code[class*=language-]').parent ()
+        .addClass ('line-numbers')
+        // Create label for all languages except PHP
+        .attr ('lang', function () {
+          var v = $ (this).find ('code').attr ('class').replace (/\s*language-/g, '');
+          return v == 'php' ? null : v[0].toUpperCase () + v.substr (1);
+        });
+    </script>
+    <script src="assets/js/prism.min.js"></script>
   </body>
 </html>

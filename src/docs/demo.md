@@ -1,9 +1,11 @@
-Getting Started
+Demonstration
 ======================
 
-- [Chapter 1]({$my}#chapter1)
-- [Chapter 2]({$my}#chapter2)
-- [Chapter 3]({$my}#chapter3)
+<ul class="nav nav-list" markdown="1">
+<li><a href="{$my}#chapter1">Chapter 1</a></li>
+<li><a href="{$my}#chapter2">Chapter 2</a></li>
+<li><a href="{$my}#chapter3">Chapter 3</a></li>
+</ul>
 
 ---
 
@@ -16,21 +18,23 @@ Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saep
 
 #### An example code block
 
-	/**
-	 * Does something.
-	 * @param string $name
-	 * @param int|null $type
-	 * @return bool
-	 */
-	function example ($name, $type = null) {
-	  if (!$name)
-	    throw new ArgumentException ("You must provide a name");
-	  doSomething ($name, $type, 32); // 32 is a magic number
-	  echo <<<JS
-	    init ($name);
-	HTML;
-	  return true;
-	}
+```php
+/**
+ * Does something.
+ * @param string $name
+ * @param int|null $type
+ * @return bool
+ */
+function example ($name, $type = null) {
+  if (!$name)
+    throw new ArgumentException ("You must provide a name");
+  doSomething ($name, $type, 32); // 32 is a magic number
+  echo <<<JS
+    init ($name);
+HTML;
+  return true;
+}
+```
 
 Chapter 2 {#chapter2}
 --------------------
