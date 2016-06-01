@@ -53,7 +53,7 @@ require 'lib/ParsedownExtra.php';
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header col-md-2">
+        <div class="navbar-header col-md-3">
           <button type="button"
                   class="navbar-toggle collapsed"
                   data-toggle="collapse"
@@ -65,7 +65,7 @@ require 'lib/ParsedownExtra.php';
           <a class="navbar-brand" href="." contenteditable><i class="fa fa-sun-o"></i><span><?=APP_NAME?></span></a>
         </div>
 
-        <div class="collapse navbar-collapse col-md-10 navbar-links" id="navbar-collapsing">
+        <div class="collapse navbar-collapse col-md-9 navbar-links" id="navbar-collapsing">
           <ul class="nav navbar-nav">
             <li<?= $menuDir == 'index' ? ' class="active"' : '' ?>>
               <a href=".">Home</a>
@@ -84,7 +84,7 @@ require 'lib/ParsedownExtra.php';
             </li>
             <li>
               <iframe src="https://ghbtns.com/github-btn.html?user=selenia-framework&repo=selenia&type=star&count=true"
-                      frameborder="0" scrolling="0" width="170px" height="20px" style="margin:15px 0 0 15px"></iframe>
+                      frameborder="0" scrolling="0" width="100px" height="20px" style="margin:15px 0 0 15px"></iframe>
             </li>
           </ul>
         </div>

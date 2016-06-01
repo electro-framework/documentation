@@ -5,7 +5,7 @@
 
 #### Setup
 
-- [Installation](docs/getting-started)
+- [Installation](docs/installation)
 - [Demo](docs/demo)
 
 #### The Basics
