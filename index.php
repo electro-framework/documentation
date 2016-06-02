@@ -1,6 +1,6 @@
 <?php
   const APP_NAME = 'lightwave';
-  const THEME = 'theme2'; // Either 'theme1' or 'theme2'
+  const THEME = 'theme1'; // Either 'theme1' or 'theme2'
 
   require 'lib/Parsedown.php';
   require 'lib/ParsedownExtra.php';
