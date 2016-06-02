@@ -166,6 +166,10 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
     float: left;
   }
 
+  .navbar-brand {
+    padding-left: 0;
+  }
+
 }
 
 /*-------------------------------
@@ -219,7 +223,7 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 -------------------------------*/
 
 .sidebar-nav {
-  padding: 5px 15px;
+  padding: 5px 30px;
   line-height: 1.2em;
   margin-top: 10px;
 }
@@ -355,58 +359,48 @@ pre[lang]:before {
   HOME PAGE
 -------------------------------*/
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);
-  color: #EEE;
-  text-align: center;
+.home {
   position: absolute;
   left: 0;
   right: 0;
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
-  margin-top: -152px; /* overflow the page's top to include space for mobile menu when it opens. */
-  padding-top: 206px;
+  margin-top: -234px; /* overflow the page's top to include space for mobile menu when it opens. */
 }
 
-.jumbotron h1 {
+/* Main marketing message and sign up button */
+#intro {
+  background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);
+  color: #FFF;
+  text-align: center;
+  padding: 288px 15px 50px;
+}
+
+#intro h1 {
   color: #FFF;
   font-size: 60px;
   line-height: 1;
   margin-bottom: 1em;
-  margin-top: 40px;;
+  margin-top: 40px;
   font-weight: 100;
   font-family: helvetica neue, Helvetica, sans-serif;
   letter-spacing: 9px;
   text-shadow: 0 0 10px #fff;
 }
 
-.jumbotron .lead {
+#intro .lead {
   font-size: 24px;
   line-height: 1.25;
   font-weight: 100;
   font-family: helvetica neue, Helvetica, sans-serif;
 }
 
-.jumbotron .btn {
+#intro .btn {
   padding: 14px 24px;
   background-color: #6970A7;
   border-color: #4F557D
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 60px 0;
-}
-
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
 #homeContent {
-  margin-top: 374px;
-  padding-top: 25px;
+  padding-top: 50px;
 }
 
 #homeContent strong {
@@ -434,8 +428,14 @@ pre[lang]:before {
   border-right: 1px solid #EEE;
 }
 
+.theme2 .navbar-brand {
+  padding-left: 25px;
+}
+
+
 body.theme2:not(.index-page) {
   background-color: #f3f4f7;
+  /*background-color: #ECEFF1;*/
 }
 
 .theme2 #page {

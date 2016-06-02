@@ -1,5 +1,6 @@
-  <div class="jumbotron" contenteditable>
-  
+<div class="home">
+  <div id="intro" contenteditable>
+
     <h1>LIGHTWAVE</h1>
 
     <p class="lead">
@@ -8,10 +9,8 @@
     <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
   </div>
 
-  <hr>
+  <div id="homeContent" class="container" contenteditable>
 
-  <div id="homeContent" class="row-fluid" contenteditable>
-    
     <div class="col-md-4" markdown="1">
 #### Amazingly fast and scalable
 
@@ -55,4 +54,5 @@
 
 <a class="btn" href="#">Want to know more? &raquo;</a>
   </div>
+</div>
 </div>
