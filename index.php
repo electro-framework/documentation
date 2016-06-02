@@ -1,7 +1,10 @@
 <?php
-require 'lib/Parsedown.php';
-require 'lib/ParsedownExtra.php';
   const APP_NAME = 'lightwave';
+  const THEME = 'theme2'; // Either 'theme1' or 'theme2'
+
+  require 'lib/Parsedown.php';
+  require 'lib/ParsedownExtra.php';
+
   /*
    * Selected options for the Prism plugin:
    * - Themes: Default
@@ -48,45 +51,43 @@ require 'lib/ParsedownExtra.php';
     $split   = explode ('/', $path);
     $menuDir = $split[1];
     ?>
-  <body class="<?= $menuDir ?>-page">
+  <body class="<?= $menuDir ?>-page <?=THEME?>" onscroll="document.getElementById('mainMenu').setAttribute('data-scroll', window.scrollY ? '1' : '0')">
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header col-md-3">
-          <button type="button"
-                  class="navbar-toggle collapsed"
-                  data-toggle="collapse"
-                  data-target="#navbar-collapsing"
-                  aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="." contenteditable><i class="fa fa-sun-o"></i><span><?=APP_NAME?></span></a>
-        </div>
+        <div class="row">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header col-md-3">
+            <button type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#navbar-collapsing"
+                    aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="." contenteditable><i class="fa fa-sun-o"></i><span><?=APP_NAME?></span></a>
+          </div>
 
-        <div class="collapse navbar-collapse col-md-9 navbar-links" id="navbar-collapsing">
-          <ul class="nav navbar-nav">
-            <li<?= $menuDir == 'index' ? ' class="active"' : '' ?>>
-              <a href=".">Home</a>
-            </li>
-            <li<?= $menuDir == 'about' ? ' class="active"' : '' ?>>
-              <a href="about">Features</a>
-            </li>
-            <li<?= $menuDir == 'docs' ? ' class="active"' : '' ?>>
-              <a href="docs/installation">Documentation</a>
-            </li>
-            <li<?= $menuDir == 'download' ? ' class="active"' : '' ?>>
-              <a href="download">Download</a>
-            </li>
-            <li<?= $menuDir == 'community' ? ' class="active"' : '' ?>>
-              <a href="community">Community</a>
-            </li>
-            <li>
-              <iframe src="https://ghbtns.com/github-btn.html?user=selenia-framework&repo=selenia&type=star&count=true"
-                      frameborder="0" scrolling="0" width="100px" height="20px" style="margin:15px 0 0 15px"></iframe>
-            </li>
-          </ul>
+          <div class="collapse navbar-collapse col-md-9 navbar-links" id="navbar-collapsing">
+            <ul class="nav navbar-nav">
+              <li<?= $menuDir == 'index' ? ' class="active"' : '' ?>>
+                <a href=".">Home</a>
+              </li>
+              <li<?= $menuDir == 'about' ? ' class="active"' : '' ?>>
+                <a href="about">Features</a>
+              </li>
+              <li<?= $menuDir == 'docs' ? ' class="active"' : '' ?>>
+                <a href="docs/installation">Documentation</a>
+              </li>
+              <li<?= $menuDir == 'download' ? ' class="active"' : '' ?>>
+                <a href="download">Download</a>
+              </li>
+              <li<?= $menuDir == 'community' ? ' class="active"' : '' ?>>
+                <a href="community">Community</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
       </div>
@@ -128,15 +129,15 @@ require 'lib/ParsedownExtra.php';
         $content = file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
         ?>
         <div class="row">
-          <div class="col-md-3">
+          <div id="sidebar" class="col-md-3">
             <div class="sidebar-nav">
               <?= navMenu (compileMD (file_get_contents ('src/docs/menu.md', FILE_USE_INCLUDE_PATH))) ?>
             </div>
             <!--/.well -->
           </div>
           <!--/span-->
-          <div class="page col-md-9">
-            <div class="container-fluid">
+          <div id="workspace" class="col-md-9">
+            <div id="page" class="container-fluid">
               <div class="content col-md-12 col-lg-12">
                 <?= $content ?>
               </div>

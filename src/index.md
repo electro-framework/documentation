@@ -1,20 +1,17 @@
-
   <div class="jumbotron" contenteditable>
+  
     <h1>LIGHTWAVE</h1>
 
     <p class="lead">
-      A next-generation PHP framework
-    </p>
-    <p class="lead">
-      for building amazing web applications!
+      A next-generation PHP web framework
     </p><br>
-    <a class="btn btn-large btn-warning" href="download">Download v1.0.0-beta</a>
+    <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
   </div>
 
   <hr>
 
-  <div class="features row-fluid" contenteditable>
-
+  <div id="homeContent" class="row-fluid" contenteditable>
+    
     <div class="col-md-4" markdown="1">
 #### Amazingly fast and scalable
 
