@@ -1,5 +1,5 @@
 <?php
-  const APP_NAME = 'lightwave';
+  const APP_NAME = 'electro';
   const THEME = 'theme1'; // Either 'theme1' or 'theme2'
 
   require 'lib/Parsedown.php';

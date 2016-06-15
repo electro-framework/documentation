@@ -1,10 +1,10 @@
 <div class="home">
   <div id="intro" contenteditable>
 
-    <h1>LIGHTWAVE</h1>
+    <h1>electro</h1>
 
     <p class="lead">
-      A next-generation PHP web framework
+      A modern PHP web framework
     </p><br>
     <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
   </div>
