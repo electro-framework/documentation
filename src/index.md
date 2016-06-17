@@ -1,7 +1,7 @@
 <div class="home">
   <div id="intro" contenteditable>
 
-    <h1>electro</h1>
+    <h1>ELECTRO</h1>
 
     <p class="lead">
       A modern PHP web framework
