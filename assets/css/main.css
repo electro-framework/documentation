@@ -377,8 +377,8 @@ pre[lang]:before {
 /* Main marketing message and sign up button */
 #intro {
   /*background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);*/
-  background: linear-gradient(45deg, rgba(61, 67, 117, 0.95) 0%, rgba(121, 127, 171, 0.95) 100%), url(../i/elec2tro9.png) center 35% no-repeat;
-  background-size: auto 120%;
+  background: linear-gradient(45deg, rgba(61, 67, 117, 0.95) 0%, rgba(121, 127, 171, 0.95) 100%), url(../i/electro9.png) center 35% no-repeat;
+  background-size: 2200px;
   color: #FFF;
   padding: 288px 15px 80px;
   text-align: center;
