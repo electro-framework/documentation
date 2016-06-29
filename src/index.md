@@ -1,12 +1,14 @@
 <div class="home">
   <div id="intro" contenteditable>
 
-    <h1>ELECTRO</h1>
-
-    <p class="lead">
-      A modern PHP web framework
-    </p><br>
-    <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
+      <img id="logo" src="assets/i/electro9.png">
+      <div id="introText">
+        <h1>ELECTRO</h1>
+        <p class="lead">An electrifying PHP web framework</p>
+        <div id="callToAction">
+            <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
+        </div>
+      </div>
   </div>
 
   <div id="homeContent" class="container" contenteditable>

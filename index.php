@@ -66,7 +66,7 @@
               <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="." contenteditable><i class="fa fa-sun-o"></i><span><?=APP_NAME?></span></a>
+            <a class="navbar-brand" href="." contenteditable><i class="fa fa-bolt"></i><span><?=APP_NAME?></span></a>
           </div>
 
           <div class="collapse navbar-collapse col-md-9 navbar-links" id="navbar-collapsing">
@@ -151,9 +151,9 @@
         echo file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
       }
       ?>
-      <div class="footer pull-right">
-        &copy; 2016 <a href="http://impactwave.com">Impactwave Lda</a> and <a href="http://github.com/claudio-silva">Cláudio Silva</a>
-      </div>
+<!--      <div class="footer pull-right">-->
+<!--        &copy; 2016 <a href="http://impactwave.com">Impactwave Lda</a> and <a href="http://github.com/claudio-silva">Cláudio Silva</a>-->
+<!--      </div>-->
     </div>
     <!-- /container -->
 

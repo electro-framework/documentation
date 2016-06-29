@@ -364,22 +364,44 @@ pre[lang]:before {
   left: 0;
   right: 0;
   margin-top: -234px; /* overflow the page's top to include space for mobile menu when it opens. */
+  height: 100%;
+}
+
+#logo {
+  display: block;
+  height: 400px;
+  vertical-align: middle;
+  margin: 0 auto;
 }
 
 /* Main marketing message and sign up button */
 #intro {
-  background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);
+  /*background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);*/
+  background: linear-gradient(45deg, rgba(61, 67, 117, 0.95) 0%, rgba(121, 127, 171, 0.95) 100%), url(../i/elec2tro9.png) center 35% no-repeat;
+  background-size: auto 120%;
   color: #FFF;
+  padding: 288px 15px 80px;
   text-align: center;
-  padding: 288px 15px 50px;
+  min-height: 1120px;
+  height: calc(100% + 178px);
+}
+
+#introText {
+  /*display: inline-block;*/
+  /*margin-left: 30px;;*/
+  /*text-align: left;*/
+  vertical-align: middle;
+  margin-top: 30px;
 }
 
 #intro h1 {
+  display: inline-block;
   color: #FFF;
-  font-size: 60px;
+  font-size: 125px;
   line-height: 1;
-  margin-bottom: 1em;
-  margin-top: 40px;
+  margin-bottom: 45px;
+  margin-top: 30px;
+  padding-left: 15px;
   font-weight: 100;
   font-family: helvetica neue, Helvetica, sans-serif;
   letter-spacing: 9px;
@@ -391,6 +413,11 @@ pre[lang]:before {
   line-height: 1.25;
   font-weight: 100;
   font-family: helvetica neue, Helvetica, sans-serif;
+}
+
+#callToAction {
+  text-align: center;
+  margin-top: 45px;
 }
 
 #intro .btn {
