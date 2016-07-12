@@ -4,7 +4,7 @@
       <img id="logo" src="assets/i/electro9.png">
       <div id="introText">
         <h1>ELECTRO</h1>
-        <p class="lead">Electrifying PHP web framework</p>
+        <p class="lead">a solid foundation for modern PHP web development</p>
         <div id="callToAction">
             <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
         </div>
