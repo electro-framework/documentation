@@ -1,4 +1,6 @@
-/vendor/*
+/vendor
 composer.lock
-/Unicorn Admin/*
-/.idea/*
+/.idea
+/build
+/cache
+/project
