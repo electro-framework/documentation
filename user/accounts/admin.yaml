@@ -1,0 +1,11 @@
+email: paulo.silva@impactwave.com
+fullname: 'Paulo Silva'
+title: Administrator
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$wLQwy5rZy8qyWH74zx.vx..JDXzRf6Kr/8LQy1DdSJ28Ht.uh1KHG

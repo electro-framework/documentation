@@ -1,0 +1,17 @@
+title: Electro
+default_lang: pt
+author:
+  name: Impactwave
+  email: paulo.silva@impactwave.com
+taxonomies:
+  - electro
+  - documentation
+metadata:
+  description: 'Electro documentation'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+blog:
+  route: /blog

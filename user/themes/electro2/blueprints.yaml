@@ -1,0 +1,27 @@
+name: Electro2
+version: 0.1.0
+description: electro documentation
+icon: rebel
+author:
+  name: paulo silva
+  email: paulo.silva@impactwave.com
+homepage: https://github.com/paulo-silva/grav-theme-electro2
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/paulo-silva/grav-theme-electro2/issues
+readme: https://github.com/paulo-silva/grav-theme-electro2/blob/develop/README.md
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool
