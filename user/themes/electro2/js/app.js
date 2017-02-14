@@ -22,7 +22,42 @@ function gerarContentChapterLi(value){
   return html;
 }
 
+/**
+ * função para gerar site estatico
+ */
+function gerarSiteEstatico(){
+
+    $("#initStaticSite").submit( function( event ) {
+
+        //mostrar div de loading
+
+        ajaxRequestStaticSite().done(function( data ) {
+
+            console.log(data);
+        }).fail(function() {
+            $("#generateMsg").html("Someting went wrong please try again!!!");
+        });
+
+        event.preventDefault();
+    });
+}
+
+/**
+ * ajax requests
+ */
+function ajaxRequestStaticSite () {
+    var url = 'generate-static/init';
+    return $.ajax({
+        method: 'GET',
+        url: url
+    });
+}
+
 $(document).ready(function() {
     //gerar content chapters no topo da pagina
     gerarContentChapter();
+
+    //form para iniciar a geração de site estaico
+    gerarSiteEstatico();
+
 });

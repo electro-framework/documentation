@@ -520,7 +520,7 @@ class LoginPlugin extends Plugin
 
 
     /**
-     * Add twig paths to plugin templates.
+     * Add twig paths to plugin pages.
      */
     public function onTwigTemplatePaths()
     {

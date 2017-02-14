@@ -1,7 +1,14 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Page\Collection;
 use Grav\Common\Plugin;
+use Grav\Common\Uri;
+use Grav\Common\Page\Page;
+use Grav\Common\Page\Types;
+use Grav\Common\Taxonomy;
+use Grav\Common\Utils;
+use Grav\Common\Data\Data;
 use RocketTheme\Toolbox\Event\Event;
 
 /**
@@ -26,8 +33,17 @@ class GenerateStaticSitePlugin extends Plugin
     public static function getSubscribedEvents()
     {
         return [
-            'onPluginsInitialized' => ['onPluginsInitialized', 0]
+            'onPluginsInitialized' => ['onPluginsInitialized', 0],
+            'onTwigTemplatePaths'  => ['onTwigTemplatePaths', 0],
         ];
+    }
+
+    /**
+     * Add twig paths to plugin templates.
+     */
+    public function onTwigTemplatePaths()
+    {
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
 
     /**
@@ -40,17 +56,65 @@ class GenerateStaticSitePlugin extends Plugin
             return;
         }
 
-        //$this->gerarStaticSite();
+        $uri = $this->grav['uri'];
 
-        // Enable the main event we are interested in
-        /*$this->enable([
-            'gerarStaticSite' => ['gerarStaticSite', 0]
-        ]);*/
+        if ($this->config->get('plugins.generate-static-site.route_home') == $uri->path()) {
+            $this->enable([
+                'onPageInitialized' => ['onHomePage', 0]
+            ]);
+        }
+
+        if ($this->config->get('plugins.generate-static-site.route_init') == $uri->path()) {
+            $this->enable([
+                'onPageInitialized' => ['generateStaticSite', 0]
+            ]);
+        }
+
     }
 
-    public function gerarStaticSite(){
+    public function generateStaticSite(){
         //$output = shell_exec('/usr/local/bin/wget --mirror --convert-links --html-extension -P '.$this->folder.' '.$this->site.' 2>&1');
-        //echo "<pre>$output</pre>";
+        //$comand = '/usr/local/bin/wget --mirror --convert-links --html-extension -P '.$this->folder.' '.$this->site.' 2>&1';
+        $comand = "whoami";
+
+        exec($comand, $output);
+
+        //$this->grav['msg'] = $output;
+
+        //print_r($output[0]);
+
+        $this->grav['msg'] = "";
+
+        if ($output[0] == "") {
+
+            $this->grav['msg'] = "Error in the creation of static web page!!!";
+        } else {
+            $this->grav['msg'] = "Static web page Created Successfully";
+        }
+
+
+
+        $page = new Page;
+
+        $page->init(new \SplFileInfo(__DIR__ . "/pages/init.md"));
+
+        unset($this->grav['page']);
+
+        $this->grav['page'] = $page;
+    }
+
+    public function onHomePage()
+    {
+        //$route = $this->config->get('plugins.generate-static-site.route');
+        $page = new Page;
+
+        $page->init(new \SplFileInfo(__DIR__ . "/pages/generate.md"));
+
+        unset($this->grav['page']);
+
+
+        $this->grav['page'] = $page;
+
     }
 
     /**
