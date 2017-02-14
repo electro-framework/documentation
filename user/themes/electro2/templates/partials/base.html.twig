@@ -32,7 +32,15 @@
 
 {% endblock head%}
 </head>
+
+{% if page.home() %}
+<body id="top" class="{{ page.header.body_classes }} index-page">
+{% else %}
 <body id="top" class="{{ page.header.body_classes }}">
+{% endif %}
+
+
+
 
 {% block header %}
   <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top">
@@ -51,34 +59,17 @@
           <a class="navbar-brand" href="."><i class="fa fa-bolt"></i><span>{{ config.site.title }}</span></a>
         </div>
 
-        <div class="collapse navbar-collapse col-md-9 navbar-links" id="navbar-collapsing">
           {% block header_navigation %}
-          <nav class="main-nav">
               {% include 'partials/navigation.html.twig' %}
-          </nav>
           {% endblock %}
-        </div>
       </div>
-
     </div>
   </nav>
 {% endblock %}
 
 {% block body %}
-    <section id="body">
-        <div class="wrapper padding">
-        {% block content %}{% endblock %}
-        </div>
-    </section>
-{% endblock %}
-
-{% block footer %}
-    <div class="footer text-center">
-        <div class="wrapper padding">
-            <p>
-              footer
-            </p>
-        </div>
+    <div class="main container">
+    {% block content %}{% endblock %}
     </div>
 {% endblock %}
 
