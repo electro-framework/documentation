@@ -449,10 +449,30 @@ pre[lang]:before {
 /*-------------------------------
   generate static site
 -------------------------------*/
+#generateStaticWrap {
+  h3 {
+    padding: 30px 0;
+  }
+  .formGenerate{
+    padding: 20px 0;
+  }
+  #loadingArea{
+    background: rgba(255, 255, 255, 0.5);
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 300px;
+    width: 100%;
+  }
 
-.generateSpanInfo{
-  display: block;
+  .generateSpanInfo{
+    display: block;
+  }
 }
+
+
+
+
 
 
 /*-------------------------------

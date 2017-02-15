@@ -11,6 +11,8 @@ use Grav\Common\Utils;
 use Grav\Common\Data\Data;
 use RocketTheme\Toolbox\Event\Event;
 
+use Bit3\GitPhp\GitRepository;
+
 /**
  * Class GenerateStaticSitePlugin
  * @package Grav\Plugin
@@ -73,24 +75,23 @@ class GenerateStaticSitePlugin extends Plugin
     }
 
     public function generateStaticSite(){
-        //$output = shell_exec('/usr/local/bin/wget --mirror --convert-links --html-extension -P '.$this->folder.' '.$this->site.' 2>&1');
-        //$comand = '/usr/local/bin/wget --mirror --convert-links --html-extension -P '.$this->folder.' '.$this->site.' 2>&1';
-        $comand = "whoami";
 
-        exec($comand, $output);
+        //generate stati web site files to folder
 
-        //$this->grav['msg'] = $output;
+        //$command = '/usr/local/bin/wget --mirror --convert-links --html-extension -nd -P '.$this->folder.' '.$this->site.' 2>&1';
+        $command = "whoami";
 
-        //print_r($output[0]);
+        exec($command, $output);
 
-        $this->grav['msg'] = "";
-
-        if ($output[0] == "") {
-
-            $this->grav['msg'] = "Error in the creation of static web page!!!";
+        if ($output == "") {
+            $msg = "0";
         } else {
-            $this->grav['msg'] = "Static web page Created Successfully";
+            $msg = "1";
         }
+
+        $this->grav['msg'] = $msg;
+
+        //commit the files to github
 
 
 
