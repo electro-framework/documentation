@@ -76,23 +76,52 @@ class GenerateStaticSitePlugin extends Plugin
 
     public function generateStaticSite(){
 
-        //generate stati web site files to folder
+        //limpar a pasta
 
-        //$command = '/usr/local/bin/wget --mirror --convert-links --html-extension -nd -P '.$this->folder.' '.$this->site.' 2>&1';
-        $command = "whoami";
+        //generate static web site files to folder
+        $command = '/usr/local/bin/wget --mirror --convert-links --html-extension  -P'.$this->folder.' '.$this->site.' 2>&1';
 
         exec($command, $output);
 
         if ($output == "") {
-            $msg = "0";
+            $msg = "error fetch site";
         } else {
+
+            //commit the files to github usando bash script
+            $output = shell_exec($this->folder.'/commit.sh');
+            echo "<pre>$output</pre>";
+
+            var_dump($output);
             $msg = "1";
+            $timestamp = date('Y-m-d H:m:s');
+            /*$commitGit = 'git add -A '.$this->folder.' && git commit -m "New automatic  commit: '.$timestamp.'" '.$this->folder.'';
+            $pushGit = 'git push '.$this->folder.'';
+
+            exec($commitGit, $outputCommitGit);
+
+            var_dump($outputCommitGit);
+
+            if ($outputCommitGit) {
+
+                exec($pushGit, $outputPushGit);
+
+                var_dump($outputPushGit);
+
+                if ($outputPushGit) {
+                    $msg = "success";
+                } else {
+                    $msg = "error push git";
+                }
+
+            } else {
+                $msg = "error commit git";
+            }*/
+
+
+
         }
 
         $this->grav['msg'] = $msg;
-
-        //commit the files to github
-
 
 
         $page = new Page;
