@@ -11,8 +11,6 @@ use Grav\Common\Utils;
 use Grav\Common\Data\Data;
 use RocketTheme\Toolbox\Event\Event;
 
-use Bit3\GitPhp\GitRepository;
-
 /**
  * Class GenerateStaticSitePlugin
  * @package Grav\Plugin
