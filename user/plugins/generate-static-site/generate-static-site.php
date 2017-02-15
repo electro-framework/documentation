@@ -90,8 +90,6 @@ class GenerateStaticSitePlugin extends Plugin
             //commit the files to github usando bash script
             $output = shell_exec($this->folder.'/commit.sh');
             echo "<pre>$output</pre>";
-
-            var_dump($output);
             $msg = "1";
             $timestamp = date('Y-m-d H:m:s');
             /*$commitGit = 'git add -A '.$this->folder.' && git commit -m "New automatic  commit: '.$timestamp.'" '.$this->folder.'';
