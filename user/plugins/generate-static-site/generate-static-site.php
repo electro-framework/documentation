@@ -79,7 +79,7 @@ class GenerateStaticSitePlugin extends Plugin
         //limpar a pasta
 
         //generate static web site files to folder
-        $command = '/usr/local/bin/wget --mirror --convert-links --html-extension  -P'.$this->folder.' '.$this->site.' 2>&1';
+        $command = '/usr/local/bin/wget --mirror --convert-links --html-extension -nd  -P'.$this->folder.' '.$this->site.' 2>&1';
 
         exec($command, $output);
 
