@@ -87,7 +87,11 @@ class GenerateStaticSitePlugin extends Plugin
 
             //commit the files to github usando bash script
             exec($this->folder.'/commit.sh', $gitOutput);
-            var_dump($gitOutput);
+            //var_dump($gitOutput);
+
+            foreach ($gitOutput as $line){
+                echo $line;
+            }
 
             $msg = "1";
             $timestamp = date('Y-m-d H:m:s');
