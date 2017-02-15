@@ -90,7 +90,7 @@ class GenerateStaticSitePlugin extends Plugin
             //var_dump($gitOutput);
 
             foreach ($gitOutput as $line){
-                echo $line;
+                echo $line.'<br>';
             }
 
             $msg = "1";
