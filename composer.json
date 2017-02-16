@@ -30,7 +30,8 @@
         "ext-zip": "*",
         "league/climate": "^3.2",
         "antoligy/dom-string-iterators": "^1.0",
-        "bit3/git-php": "^1.4"
+        "bit3/git-php": "^1.4",
+        "sami/sami": "3.0.*"
     },
     "require-dev": {
         "codeception/codeception": "^2.1",

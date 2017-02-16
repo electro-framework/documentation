@@ -40,9 +40,6 @@
 <body id="top" class="{{ page.header.body_classes }}">
 {% endif %}
 
-
-
-
 {% block header %}
   <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -57,7 +54,7 @@
             <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="."><i class="fa fa-bolt"></i><span>{{ config.site.title }}</span></a>
+          <a class="navbar-brand" href="{{ theme_config.home_url ?: base_url_absolute }}"><i class="fa fa-bolt"></i><span>{{ config.site.title }}</span></a>
         </div>
 
           {% block header_navigation %}

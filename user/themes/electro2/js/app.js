@@ -1,6 +1,5 @@
-
 /**
- * função para gerar tags com link para cada h2 da pagina
+ * funçoes para gerar tags com link para cada h2 da pagina
  */
 function gerarContentChapter(){
   //
@@ -25,7 +24,7 @@ function gerarContentChapter(){
         //checkar se tem um name, se não tiver atribuir-lhe um
         gerarNameAttr( text );
         //gerar pemalink para partilhar junto ao topico
-        $(this).prepend( gerarPermaLink( text ) );
+        $(this).prepend( gerarPermaLink( text.text().toLowerCase() ) );
       });
       //fechar ul
       html = html + "</li></ul>";
@@ -60,7 +59,7 @@ function gerarPermaLink( value ){
 }
 
 /**
- * função para gerar site estatico
+ * funçoes para gerar site estatico
  */
 function gerarSiteEstatico(){
 
@@ -69,7 +68,8 @@ function gerarSiteEstatico(){
         //mostrar div de loading
         $("#loadingArea").fadeIn();
         $("#generateMsg").html('');
-        ajaxRequestStaticSite().done(function( data ) {
+
+        ajaxRequest( $(this).attr('action') ).done(function( data ) {
 
             if ( data == "1" ) {
                 $("#generateMsg").html("Static web page Created Successfully").addClass('alert-success');
@@ -92,10 +92,32 @@ function gerarSiteEstatico(){
 }
 
 /**
+ * funções para gerar documentação pelo sami
+ */
+function gerarDocs(){
+    $("#initDocumentation").submit( function( event ) {
+
+        //mostrar div de loading
+        $("#loadingArea").fadeIn();
+        $("#generateMsg").html('');
+
+        ajaxRequest( $(this).attr('action') ).done(function( data ) {
+            console.log( data );
+            $("#loadingArea").fadeOut();
+
+        }).fail(function() {
+            $("#generateMsg").html("Someting went wrong please try again!!!").addClass('alert-danger');
+            $("#loadingArea").fadeOut();
+        });
+
+        event.preventDefault();
+    });
+}
+
+/**
  * ajax requests
  */
-function ajaxRequestStaticSite () {
-    var url = 'generate-static/init';
+function ajaxRequest ( url ) {
     return $.ajax({
         method: 'GET',
         url: url
@@ -111,6 +133,9 @@ $(document).ready(function() {
 
     //form para iniciar a geração de site estaico
     gerarSiteEstatico();
+
+    //gerar Documentação pelo sami
+    gerarDocs();
 
     //permalink share ao clickar
     var clip = new Clipboard('.permaLinkShare');

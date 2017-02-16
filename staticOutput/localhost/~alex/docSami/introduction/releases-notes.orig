@@ -2,7 +2,7 @@
 <html lang="">
 <head>
     <meta charset="utf-8" />
-    <title>installation | Electro</title>
+    <title>Releases notes | Electro</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 <meta name="description" content="Electro documentation" />
 
     <link rel="icon" type="image/png" href="/~alex/docSami/user/themes/electro2/images/logo.png" />
-    <link rel="canonical" href="http://localhost/~alex/docSami/setup/installation" />
+    <link rel="canonical" href="http://localhost/~alex/docSami/introduction/releases-notes" />
 
                                                             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 <link href="/~alex/docSami/user/themes/electro2/css/custom.css" type="text/css" rel="stylesheet" />
@@ -71,15 +71,15 @@
 						
 
     
-                                        <h4 class="has-children ">Introduction</h4>
+                                        <h4 class="has-children active">Introduction</h4>
             <ul class="nav nav-list">
-                                                <li class=""><a href="/~alex/docSami/introduction/releases-notes">Releases notes</a></li>
+                                                <li class="active"><a href="/~alex/docSami/introduction/releases-notes">Releases notes</a></li>
                                         <li class=""><a href="/~alex/docSami/introduction/sub1">About the framework</a></li>
             
             </ul>
-                                        <h4 class="has-children active">SETUP</h4>
+                                        <h4 class="has-children ">SETUP</h4>
             <ul class="nav nav-list">
-                                                <li class="active"><a href="/~alex/docSami/setup/installation">installation</a></li>
+                                                <li class=""><a href="/~alex/docSami/setup/installation">installation</a></li>
             
             </ul>
             
@@ -89,10 +89,12 @@
 
 	<div id="workspace" class="col-md-9">
 		<div id="page" class="container-fluid">
-			<h1>installation</h1>
+			<h1>Releases notes</h1>
 			<div id="chapterContentsList" class="col-md-12 col-lg-12"></div>
 			<div id="pageContent" class="content col-md-12 col-lg-12">
-				
+				<h2>random</h2>
+<h3>topic</h3>
+<p>dlsjfndsfkj</p>
 			</div>
 		</div>
 	</div>

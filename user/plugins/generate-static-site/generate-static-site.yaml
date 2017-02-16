@@ -2,7 +2,8 @@ enabled: true
 text_var: Custom Text added by the **Generate Static Site** plugin (disable plugin to remove)
 route:
 route_home: /generate-static
-route_init: /generate-static/init
+route_init_static: /generate-static/init-static
+route_init_doc: /generate-static/init-doc
 
 filters:
   category: blog

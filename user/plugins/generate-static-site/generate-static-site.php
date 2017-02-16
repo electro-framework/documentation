@@ -10,6 +10,7 @@ use Grav\Common\Taxonomy;
 use Grav\Common\Utils;
 use Grav\Common\Data\Data;
 use RocketTheme\Toolbox\Event\Event;
+use Sami\Sami;
 
 /**
  * Class GenerateStaticSitePlugin
@@ -64,12 +65,30 @@ class GenerateStaticSitePlugin extends Plugin
             ]);
         }
 
-        if ($this->config->get('plugins.generate-static-site.route_init') == $uri->path()) {
+        if ($this->config->get('plugins.generate-static-site.route_init_static') == $uri->path()) {
             $this->enable([
                 'onPageInitialized' => ['generateStaticSite', 0]
             ]);
         }
 
+        if ($this->config->get('plugins.generate-static-site.route_init_doc') == $uri->path()) {
+            $this->enable([
+                'onPageInitialized' => ['generateDocumentation', 0]
+            ]);
+        }
+
+    }
+
+    public function generateDocumentation(){
+        $page = new Page;
+
+        $page->init(new \SplFileInfo(__DIR__ . "/pages/init.md"));
+
+        $this->grav['msg'] = "hey";
+
+        unset($this->grav['page']);
+
+        $this->grav['page'] = $page;
     }
 
     public function generateStaticSite(){
