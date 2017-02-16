@@ -62,31 +62,24 @@ function gerarPermaLink( value ){
  * funçoes para gerar site estatico
  */
 function gerarSiteEstatico(){
-
     $("#initStaticSite").submit( function( event ) {
-
         //mostrar div de loading
         $("#loadingArea").fadeIn();
         $("#generateMsg").html('');
 
         ajaxRequest( $(this).attr('action') ).done(function( data ) {
-
             if ( data == "1" ) {
-                $("#generateMsg").html("Static web page Created Successfully").addClass('alert-success');
+                $("#generateMsg").html("<strong>Success:</strong> Static web page Created Successfully").addClass('alert-success');
                 $("#loadingArea").fadeOut();
             }
-
             if ( data == "0" ){
-                $("#generateMsg").html("Error in the creation of static web page!!!").addClass('alert-danger');
+                $("#generateMsg").html("<strong>Error:</strong> Error in the creation of static web page!!!").addClass('alert-danger');
                 $("#loadingArea").fadeOut();
             }
-
-
         }).fail(function() {
-            $("#generateMsg").html("Someting went wrong please try again!!!").addClass('alert-danger');
+            $("#generateMsg").html("<strong>Error:</strong> Someting went wrong please try again!!!").addClass('alert-danger');
             $("#loadingArea").fadeOut();
         });
-
         event.preventDefault();
     });
 }
@@ -96,20 +89,21 @@ function gerarSiteEstatico(){
  */
 function gerarDocs(){
     $("#initDocumentation").submit( function( event ) {
-
         //mostrar div de loading
         $("#loadingArea").fadeIn();
         $("#generateMsg").html('');
 
         ajaxRequest( $(this).attr('action') ).done(function( data ) {
-            console.log( data );
+            if ( data == "true" ){
+                $("#generateMsg").html("<strong>Success:</strong> Documentation created !!!").addClass('alert-success');
+            } else if( data == "false") {
+                $("#generateMsg").html("<strong>Error:</strong> No repository to clone !!!").addClass('alert-success');
+            }
             $("#loadingArea").fadeOut();
-
         }).fail(function() {
-            $("#generateMsg").html("Someting went wrong please try again!!!").addClass('alert-danger');
+            $("#generateMsg").html("<strong>Error:</strong> Someting went wrong please try again!!!").addClass('alert-danger');
             $("#loadingArea").fadeOut();
         });
-
         event.preventDefault();
     });
 }

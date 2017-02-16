@@ -10,7 +10,8 @@ use Grav\Common\Taxonomy;
 use Grav\Common\Utils;
 use Grav\Common\Data\Data;
 use RocketTheme\Toolbox\Event\Event;
-use Sami\Sami;
+use Symfony\Component\Finder\Finder AS Finder;
+use Sami\Sami AS Sami;
 
 /**
  * Class GenerateStaticSitePlugin
@@ -73,18 +74,69 @@ class GenerateStaticSitePlugin extends Plugin
 
         if ($this->config->get('plugins.generate-static-site.route_init_doc') == $uri->path()) {
             $this->enable([
-                'onPageInitialized' => ['generateDocumentation', 0]
+                'onPageInitialized' => ['generateDoc', 0]
             ]);
         }
 
     }
 
-    public function generateDocumentation(){
+    public function generateDoc(){
+
+        $configs = include ($this->folder.'/Docs/config.php');
+
+        if (is_array($configs['repo_url']) && count($configs['repo_url'])>0)
+        {
+
+            $dir = $this->folder.$configs['dir'];
+
+            if (!is_dir($dir)) {
+                mkdir($dir, 0777, true);
+            }
+
+            chdir($dir);
+
+            foreach ($configs['repo_url'] as $repo_url)
+            {
+                `git clone $repo_url`;
+                //$msg =  'Projecto clonado com sucesso!';
+            }
+
+            chdir('./');
+
+            $iterator = Finder::create ()
+                ->files ()
+                ->name ('*.php');
+
+            if (is_array ($configs['exclude'])) {
+                foreach ($configs['exclude'] as $exclude) {
+                    $iterator->exclude ($exclude);
+                }
+            }
+
+            $iterator->in ($dir);
+
+            $options = [
+                'theme'     => $configs['theme'],
+                'title'     => $configs['title'],
+                'build_dir' => $this->folder. $configs['build_dir'],
+                'cache_dir' => $this->folder. $configs['cache_dir'],
+            ];
+
+            $msg = "true";
+
+            new Sami($iterator, $options);
+        }
+        else
+        {
+            $msg = "false";
+        }
+
+        $this->grav['msg'] = $msg;
+
+
         $page = new Page;
 
         $page->init(new \SplFileInfo(__DIR__ . "/pages/init.md"));
-
-        $this->grav['msg'] = "hey";
 
         unset($this->grav['page']);
 
@@ -100,18 +152,11 @@ class GenerateStaticSitePlugin extends Plugin
 
         exec($command, $output);
 
-        var_dump($output);
-
         if ($output == "") {
             $msg = "0";
         } else {
-
             //commit the files to github usando bash script
-            exec($this->folder.'/commit.sh', $gitOutput);
-
-            var_dump($gitOutput);
-
-
+            //exec($this->folder.'/commit.sh', $gitOutput);
             $msg = "1";
             $timestamp = date('Y-m-d H:m:s');
             /*$commitGit = 'git add -A '.$this->folder.' && git commit -m "New automatic  commit: '.$timestamp.'" '.$this->folder.'';
@@ -136,13 +181,9 @@ class GenerateStaticSitePlugin extends Plugin
             } else {
                 $msg = "error commit git";
             }*/
-
-
-
         }
 
         $this->grav['msg'] = $msg;
-
 
         $page = new Page;
 
