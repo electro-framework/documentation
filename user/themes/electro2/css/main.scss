@@ -273,6 +273,59 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 #workspace {
   border-left: 1px solid #EEE;
   padding: 0;
+
+  h1,h2,h3 {
+    font-family: 'Exo 2', sans-serif;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h3, p {
+    margin-left: 20px;
+  }
+
+  #chapterContentsList{
+    margin: 20px 0;
+    a:hover {
+      text-decoration: none;
+    }
+    a::before{
+      content: "#";
+      display: inline-block;
+      margin-right: 5px;
+    }
+    ul {
+      //
+      li {
+        list-style: none;
+        padding: 5px 0;
+        font-weight: bold;
+        font-size: 16px;
+        ul {
+          padding-left: 20px;
+          li{
+            font-size: 15px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+
+  .permaLinkShare{
+    margin-right: 20px;
+  }
 }
 
 #page {

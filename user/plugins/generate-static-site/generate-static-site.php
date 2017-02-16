@@ -77,9 +77,11 @@ class GenerateStaticSitePlugin extends Plugin
         //limpar a pasta
 
         //generate static web site files to folder
-        $command = '/usr/local/bin/wget --mirror --convert-links --html-extension -nd  -P'.$this->folder.' '.$this->site.' 2>&1';
+        $command = '/usr/local/bin/wget --mirror --convert-links --backup-converted --html-extension -P'.$this->folder.' '.$this->site.' 2>&1';
 
         exec($command, $output);
+
+        var_dump($output);
 
         if ($output == "") {
             $msg = "0";
@@ -87,11 +89,9 @@ class GenerateStaticSitePlugin extends Plugin
 
             //commit the files to github usando bash script
             exec($this->folder.'/commit.sh', $gitOutput);
-            //var_dump($gitOutput);
 
-            foreach ($gitOutput as $line){
-                echo $line.'<br>';
-            }
+            var_dump($gitOutput);
+
 
             $msg = "1";
             $timestamp = date('Y-m-d H:m:s');
