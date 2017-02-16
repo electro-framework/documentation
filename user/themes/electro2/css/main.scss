@@ -117,10 +117,12 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
   outline: 1px dotted rgba(0, 0, 0, 0.2);
 }
 
-.navbar-links {
-  float: right;
-}
 
+#mainMenu{
+  .navbar-links {
+    float: right;
+  }
+}
 .navbar-toggle {
   position: absolute;
   right: 0;
@@ -252,7 +254,7 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 
 .sidebar-nav li > a {
   padding: 2px 0;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .sidebar-nav li > a:hover,

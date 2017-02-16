@@ -1,5 +1,5 @@
 ---
-title: sub1
+title: 'About the framework'
 visible: true
 ---
 
