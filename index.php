@@ -1,6 +1,10 @@
 <?php
   const APP_NAME = 'electro';
   const THEME = 'theme1'; // Either 'theme1' or 'theme2'
+  const MENU_FILE = 'src/docs/menu.md';
+  // const MENU_FILE = 'src/docs2/SUMMARY.md';
+  const SECTION_WITH_MENU = 'docs';
+  // const SECTION_WITH_MENU = 'docs2';
 
   require 'lib/Parsedown.php';
   require 'lib/ParsedownExtra.php';
@@ -16,7 +20,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My Project</title>
+    <title>Electro Framework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="<?php
     $path = dirname ($_SERVER['SCRIPT_NAME']);
@@ -121,17 +125,17 @@
 
       $NOT_FOUND = "<div class=row><div class='col-md-12'><code>$path</code> was not found.</div></div>";
 
-      if ($menuDir == 'docs') {
+      if ($menuDir == SECTION_WITH_MENU) {
         $subPath = substr ($path, 6);
         if ($subPath == '')
           $subPath = 'index';
-        $file    = __DIR__ . "/src/docs/$subPath.md";
+        $file    = __DIR__ . "/src/" . SECTION_WITH_MENU . "/$subPath.md";
         $content = file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
         ?>
         <div class="row">
           <div id="sidebar" class="col-md-3">
             <div class="sidebar-nav">
-              <?= navMenu (compileMD (file_get_contents ('src/docs/menu.md', FILE_USE_INCLUDE_PATH))) ?>
+              <?= navMenu (compileMD (file_get_contents (MENU_FILE, FILE_USE_INCLUDE_PATH))) ?>
             </div>
             <!--/.well -->
           </div>
