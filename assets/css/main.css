@@ -56,10 +56,12 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
   padding-top: 0;
 }
 
+
 h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
 h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
   padding-top: 90px !important;
 }
+
 
 /*-------------------------------
   MAIN MENU
@@ -228,7 +230,11 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
   margin-top: 10px;
 }
 
-.sidebar-nav h4 {
+.sidebar-nav h1 {
+  display: none;
+}
+
+.sidebar-nav h2 {
   margin: 17px 0 12px 0;
   cursor: default;
   font-weight: 500;
@@ -240,13 +246,20 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
   border-bottom: 1px dashed #DDD;
 }
 
+.sidebar-nav h2:first-of-type {
+  padding-top: 0 !important;
+}
+
 .sidebar-nav ul {
   margin-bottom: 25px;
 }
 
+.sidebar-nav li {
+  font-size: 13px;
+}
+
 .sidebar-nav li > a {
   padding: 2px 0;
-  font-size: 13px;
 }
 
 .sidebar-nav li > a:hover,
@@ -258,6 +271,11 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 
 .sidebar-nav li.active > a {
   text-decoration: underline;
+}
+
+.sidebar-nav li > ul {
+  margin-left: 15px;
+  margin-bottom: 0;
 }
 
 /*-------------------------------
@@ -367,23 +385,25 @@ pre[lang]:before {
   height: 100%;
 }
 
-#logo {
-  display: block;
-  height: 400px;
-  vertical-align: middle;
-  margin: 0 auto;
-}
-
 /* Main marketing message and sign up button */
 #intro {
   /*background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);*/
   background: linear-gradient(45deg, rgba(61, 67, 117, 0.95) 0%, rgba(121, 127, 171, 0.95) 100%), url(../i/electro9.png) center 35% no-repeat;
   background-size: 2200px;
   color: #FFF;
-  padding: 288px 15px 80px;
+  padding: 288px 15px 60px;
   text-align: center;
-  min-height: 1120px;
-  height: calc(100% + 178px);
+}
+
+#intro-content {
+  margin: 0 auto;
+  width: 900px;
+}
+
+#logo {
+  display: block;
+  float: left;
+
 }
 
 #introText {
@@ -397,7 +417,7 @@ pre[lang]:before {
 #intro h1 {
   display: inline-block;
   color: #FFF;
-  font-size: 125px;
+  font-size: 100px;
   line-height: 1;
   margin-bottom: 45px;
   margin-top: 30px;
@@ -424,11 +444,16 @@ pre[lang]:before {
 #intro .btn {
   padding: 14px 24px;
   background-color: #6970A7;
-  border-color: #4F557D
+  border-color: #4F557D;
+  min-width: 162px;
+}
+#intro .btn-primary {
+  background-color: #313853;
 }
 
 #homeContent {
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 #homeContent strong {

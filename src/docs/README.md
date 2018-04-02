@@ -1,12 +1,14 @@
-<div style="text-align:center;background:#646996;padding:50px;margin:0;color:#FFF">
+<div style="text-align:center;padding:50px;margin:0;color:#FFF">
 
-<img src="/assets/electro9.png">
+<img src="assets/i/electro9med.png">
 
-<h1 style="font-size:80px;font-weight:100;margin:0;letter-spacing:9px;text-shadow:0 0 10px #fff">ELECTRO</h1>
+<h1 style="font-size:80px;padding-top:60px;font-weight:100;margin:0;letter-spacing:9px;text-shadow:0 0 10px #fff">ELECTRO</h1>
 
-<h3 style="margin-top:0;font-weight:200;letter-spacing:2px">A solid foundation for web development</h3>
+<h3 style="margin-top:0;padding-top:15px!important;font-weight:200;letter-spacing:2px">A solid foundation for web development</h3>
 
 </div>
+
+---
 
 ## What is Electro?
 

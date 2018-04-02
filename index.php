@@ -1,31 +1,46 @@
 <?php
-  const APP_NAME = 'electro';
-  const THEME = 'theme1'; // Either 'theme1' or 'theme2'
-  const MENU_FILE = 'src/docs/menu.md';
-  // const MENU_FILE = 'src/docs2/SUMMARY.md';
-  const SECTION_WITH_MENU = 'docs';
-  // const SECTION_WITH_MENU = 'docs2';
+/*
+ * Selected options for the Prism plugin:
+ * - Themes: Default
+ * - Languages: Markup, CSS, Javascript, Bash, JSON, Less, PHP, SQL
+ * - Plugins: Line Numbers
+ * Note: the Show Language plugin is not used, but an alternative implementation is provided below.
+ */
 
-  require 'lib/Parsedown.php';
-  require 'lib/ParsedownExtra.php';
+require 'lib/Parsedown.php';
+require 'lib/ParsedownExtra.php';
 
-  /*
-   * Selected options for the Prism plugin:
-   * - Themes: Default
-   * - Languages: Markup, CSS, Javascript, Bash, JSON, Less, PHP, SQL
-   * - Plugins: Line Numbers
-   * Note: the Show Language plugin is not used, but an alternative implementation is provided below.
-   */
+const APP_NAME = 'electro';
+const THEME = 'theme1'; // Either 'theme1' or 'theme2'
+const MENU_FILE = 'SUMMARY.md';
+const INDEX_FILES = ['index.md', 'README.md', 'readme.md'];
+
+$path =
+  isset($_SERVER['REDIRECT_PATH'])
+    ? $_SERVER['REDIRECT_PATH']
+    :
+    (isset($_SERVER['SCRIPT_URL'])
+      ? $_SERVER['SCRIPT_URL']
+      : // PHP FCGI
+      (isset($_SERVER['PATH_INFO'])
+        ? $_SERVER['PATH_INFO']
+        : // MOD_PHP
+        '/index'));
+if ($path == '/')
+  $path = '/index';
+$split   = explode ('/', $path, 3);
+$sectionDir = $split[1];
+
+$basePath = dirname ($_SERVER['SCRIPT_NAME']);
+$basePath == '/' ? '' : $basePath;
+
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Electro Framework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="<?php
-    $path = dirname ($_SERVER['SCRIPT_NAME']);
-    echo $path == '/' ? '' : $path;
-    ?>/">
+    <base href="<?=$basePath?>/">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic'
           rel='stylesheet'
           type='text/css'>
@@ -39,23 +54,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
 
-    <?php $path =
-      isset($_SERVER['REDIRECT_PATH'])
-        ? $_SERVER['REDIRECT_PATH']
-        :
-        (isset($_SERVER['SCRIPT_URL'])
-          ? $_SERVER['SCRIPT_URL']
-          : // PHP FCGI
-          (isset($_SERVER['PATH_INFO'])
-            ? $_SERVER['PATH_INFO']
-            : // MOD_PHP
-            '/index'));
-    if ($path == '/')
-      $path = '/index';
-    $split   = explode ('/', $path);
-    $menuDir = $split[1];
+    <?php
     ?>
-  <body class="<?= $menuDir ?>-page <?=THEME?>" onscroll="document.getElementById('mainMenu').setAttribute('data-scroll', window.scrollY ? '1' : '0')">
+  <body class="<?= $sectionDir ?>-page <?=THEME?>" onscroll="document.getElementById('mainMenu').setAttribute('data-scroll', window.scrollY ? '1' : '0')">
 
     <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -70,24 +71,24 @@
               <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="." contenteditable><i class="fa fa-bolt"></i><span><?=APP_NAME?></span></a>
+            <a class="navbar-brand" href="."><i class="fa fa-bolt"></i><span><?=APP_NAME?></span></a>
           </div>
 
           <div class="collapse navbar-collapse col-md-9 navbar-links" id="navbar-collapsing">
             <ul class="nav navbar-nav">
-              <li<?= $menuDir == 'index' ? ' class="active"' : '' ?>>
+              <li<?= $sectionDir == 'index' ? ' class="active"' : '' ?>>
                 <a href=".">Home</a>
               </li>
-              <li<?= $menuDir == 'about' ? ' class="active"' : '' ?>>
+              <li<?= $sectionDir == 'about' ? ' class="active"' : '' ?>>
                 <a href="about">Features</a>
               </li>
-              <li<?= $menuDir == 'docs' ? ' class="active"' : '' ?>>
-                <a href="docs/installation">Documentation</a>
+              <li<?= $sectionDir == 'getting-started' ? ' class="active"' : '' ?>>
+                <a href="getting-started">Get Started</a>
               </li>
-              <li<?= $menuDir == 'download' ? ' class="active"' : '' ?>>
-                <a href="download">Download</a>
+              <li<?= $sectionDir == 'docs' ? ' class="active"' : '' ?>>
+                <a href="docs">Documentation</a>
               </li>
-              <li<?= $menuDir == 'community' ? ' class="active"' : '' ?>>
+              <li<?= $sectionDir == 'community' ? ' class="active"' : '' ?>>
                 <a href="community">Community</a>
               </li>
             </ul>
@@ -114,28 +115,43 @@
         return $text;
       }
 
-      function navMenu ($src)
+      function navMenu ($src, $baseURL)
       {
+        $indices = implode ('|', array_map('preg_quote', INDEX_FILES));
         return preg_replace ([
-          '%<ul>%',
+          '%<ul>%',                         // apply CSS classes to UL elements
+          '%<a href="(.+)"%',               // prepend the base URL
+          "%<a href=\"(.*?)/($indices)\"%"  // remove names of index files
         ], [
           '<ul class="nav nav-list">',
+          "<a href=\"$baseURL/$1\"",
+          "<a href=\"$1\"",
         ], $src);
       }
 
       $NOT_FOUND = "<div class=row><div class='col-md-12'><code>$path</code> was not found.</div></div>";
 
-      if ($menuDir == SECTION_WITH_MENU) {
-        $subPath = substr ($path, 6);
-        if ($subPath == '')
-          $subPath = 'index';
-        $file    = __DIR__ . "/src/" . SECTION_WITH_MENU . "/$subPath.md";
+
+      $menuFile = __DIR__ . "/src/{$sectionDir}/" . MENU_FILE;
+      if (file_exists ($menuFile)) {
+        $file = __DIR__ . "/src$path";
+        if (is_dir ($file)) {
+          $dirPath = $file;
+          foreach (INDEX_FILES as $f) {
+            $file = "$dirPath/$f";
+            if (file_exists ($file))
+              break;
+          }
+        }
+        // Append .md if no file extension is present
+        elseif (!preg_match('/\..+$/', $file))
+          $file .= '.md';
         $content = file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
         ?>
         <div class="row">
           <div id="sidebar" class="col-md-3">
             <div class="sidebar-nav">
-              <?= navMenu (compileMD (file_get_contents (MENU_FILE, FILE_USE_INCLUDE_PATH))) ?>
+              <?= navMenu (compileMD (file_get_contents ($menuFile)), $sectionDir) ?>
             </div>
             <!--/.well -->
           </div>

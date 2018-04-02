@@ -1,5 +1,6 @@
 {
-    "require": {
-        "sami/sami": "3.0.*"
-    }
+  "require": {
+    "php": "7.*",
+    "sami/sami": "3.0.*"
+  }
 }

@@ -1,60 +1,50 @@
 <div class="home">
-  <div id="intro" contenteditable>
-
-      <img id="logo" src="assets/i/electro9.png">
+  <div id="intro">
+    <div id="intro-content">
+      <img id="logo" src="assets/i/electro9med.png">
       <div id="introText">
         <h1>ELECTRO</h1>
-        <p class="lead">a solid foundation for modern PHP web development</p>
+        <p class="lead">PHP Web Development Framework</p>
         <div id="callToAction">
-            <a class="btn btn-large btn-warning" href="docs/installation">GET STARTED!</a>
+            <a class="btn btn-large btn-warning btn-primary" href="getting-started">GET STARTED!</a>
+            <a class="btn btn-large btn-warning" href="docs">DOCUMENTATION</a>
         </div>
       </div>
+    </div>
   </div>
 
-  <div id="homeContent" class="container" contenteditable>
+  <div id="homeContent" class="container" markdown=1>
 
-    <div class="col-md-4" markdown="1">
-#### Amazingly fast and scalable
+### Modern architecture
 
-★ Integrated **PHPFastCGI**-enabled *instant-start* app server, capable of handling thousands of requests per second.
+* **Elegant and expressive** APIs that take advantage of the latest PHP language features.
 
-★ It can also run as a conventional and universally compatible PHP application that can be deployed to any hosting provider.
+* Down to the core plug&amp;play, **fully modular architecture** provides endless flexibility and extensibility.
 
-★ It can run your apps either way with absolutely **no code changes**.
+* **S.O.L.I.D.** design-by-contract, fully **dependency-injected** and **testable** codebase.
 
-★ Accelerate it even more by using the built-in multi-level caching support, PHP's native opcode cache and pre-assembled optimized code loaders.
+* Tries to **avoid anti-patterns**, as much as is reasonable. This means, for example, no singletons, no global "facades" and no service locators.
 
-<a class="btn" href="#">Find out how &raquo;</a>
-  </div>
+* Follows modern-day **best-practices**, but still focusing on **easiness** and **convenience** for the developer.
 
-  <div class="col-md-4" markdown="1">
-#### Modern architecture
+* State of the art **PSR-7/14 compliant**, middleware-based HTTP pipeline and **deep Composer integration** provide easy **bi-directional interoperability** with many libraries and frameworks.
 
-★ Elegant and expressive APIs that take advantage of the latest PHP language features.
+### Fast and scalable
 
-★ Plug&play, down to the core, fully modular architecture provides endless flexibility and extensibility.
+* Optimized startup and fast **hierarchical routing**.
 
-★ S.O.L.I.D. design, fully dependency-injected codebase.
+* Built-in multi-level caching support.
 
-★ No singletons, no facades, no service locators, but still focused on easiness and convenience.
+### Superior development experience
 
-★ State of the art PSR-7/14 compliant, middleware-based HTTP pipeline and deep Composer integration provide easy interoperability with many libraries and frameworks.
+* Extensively **documented, statically typed** and **refactor-friendly** code.
 
-<a class="btn" href="#">More features &raquo;</a>
-  </div>
+* **Full autocompletion and code analysis support** for IDEs (works amazingly with PHPStorm).
 
-  <div class="col-md-4" markdown="1">
-#### Superior development experience
+* Code generators for rapidly **scaffolding** modules, controllers, views, models and many other application components.
 
-★ Extensively documented, statically typed and refactor-friendly code.
+* Sophisticated **web debugging console** with enhanced logging and extensive introspection capabilities, makes tracking and solving errors a breeze.
 
-★ Full autocompletion and code analysis support for IDEs (works amazingly with PHPStorm).
+* **Cross-platform**. Additionally, you also get an integrated, easy to setup, lightweight development environment to get you up and running in no time.
 
-★ Code generators for rapidly scaffolding modules, controllers, views, models and many other application components.
-
-★ Sophisticated web debugging console with enhanced logging, extensive introspection and *click-to-edit-on-IDE* capabilities, makes tracking and solving errors a breeze.
-
-<a class="btn" href="#">Want to know more? &raquo;</a>
-  </div>
-</div>
 </div>

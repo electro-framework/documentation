@@ -9,11 +9,6 @@
 * [Upgrade Guide](upgrade-guide.md)
 * [License](license.md)
 
-## Getting Started
-
-* [Installation](getting-started/installation.md)
-* [Configuration](getting-started/configuration.md)
-
 ## Architecture
 
 * [Directory Structure](architecture/directory-structure.md)
