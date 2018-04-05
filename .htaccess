@@ -12,18 +12,21 @@
   RewriteRule ^index[^./]+\.php - [F,L,NC]
   RewriteRule ^bin/ - [F,L,NC]
 
-  # Serve existing files files.
+  # Serve existing files.
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
-
-  # Deny all other existing files.
-  RewriteCond %{REQUEST_FILENAME} -f
-  RewriteRule ^ - [F,L,NC]
 
   # Split the REQUEST_URI into a BASE_URI and a PATH.
   RewriteRule ^(.*) - [E=PATH:/$1]
   RewriteCond %{REQUEST_URI}%{ENV:PATH} ^(.*?)(.+)\2$
   RewriteRule ^ - [E=BASE_URI:%1]
+
+  # Serve static files (assets) on virtual URIs that are not markdown source.
+  # Note: assets are served relative to /src.
+  RewriteCond %{REQUEST_FILENAME} ^(.*?)/([^/]+)$
+  RewriteCond %1/src%{ENV:PATH} -f
+  RewriteCond %{ENV:PATH} .*(?<!\.md)$
+  RewriteRule ^ %{ENV:BASE_URI}/src%{ENV:PATH} [L]
 
   # Call the front-controller.
   RewriteRule ^ %{ENV:BASE_URI}/index.php [L]

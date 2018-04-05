@@ -34,6 +34,33 @@ $sectionDir = $split[1];
 $basePath = dirname ($_SERVER['SCRIPT_NAME']);
 $basePath == '/' ? '' : $basePath;
 
+function compileMD ($src)
+{
+  $parser = new ParsedownExtra;
+  $text = $parser->text ($src);
+  $text = preg_replace_callback ('/\{\$(\w+)\}/', function ($m) {
+    global $context;
+    return $context[$m[1]];
+  }, $text);
+  return $text;
+}
+
+function preprocessHtml ($src, $baseURL)
+{
+  $indices = implode ('|', array_map('preg_quote', INDEX_FILES));
+  return preg_replace ([
+    '%<ul>%',                         // apply CSS classes to UL elements
+    '%<a href="(.+)"%',               // prepend the base URL
+    '%<img src="(.+)"%',              // prepend the base URL
+    "%<a href=\"(.*?)/($indices)\"%"  // remove names of index files (ex: 'index.md')
+  ], [
+    '<ul class="nav nav-list">',
+    "<a href=\"$baseURL/$1\"",
+    "<img src=\"$baseURL/$1\"",
+    "<a href=\"$1\"",
+  ], $src);
+}
+
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,7 +71,7 @@ $basePath == '/' ? '' : $basePath;
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic'
           rel='stylesheet'
           type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro|Exo+2:300,500,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro|Exo+2:300,500,700&amp;subset=latin" rel="stylesheet">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
@@ -104,33 +131,7 @@ $basePath == '/' ? '' : $basePath;
         'my' => substr ($path, 1),
       ];
 
-      function compileMD ($src)
-      {
-        $parser = new ParsedownExtra;
-        $text = $parser->text ($src);
-        $text = preg_replace_callback ('/\{\$(\w+)\}/', function ($m) {
-          global $context;
-          return $context[$m[1]];
-        }, $text);
-        return $text;
-      }
-
-      function navMenu ($src, $baseURL)
-      {
-        $indices = implode ('|', array_map('preg_quote', INDEX_FILES));
-        return preg_replace ([
-          '%<ul>%',                         // apply CSS classes to UL elements
-          '%<a href="(.+)"%',               // prepend the base URL
-          "%<a href=\"(.*?)/($indices)\"%"  // remove names of index files
-        ], [
-          '<ul class="nav nav-list">',
-          "<a href=\"$baseURL/$1\"",
-          "<a href=\"$1\"",
-        ], $src);
-      }
-
       $NOT_FOUND = "<div class=row><div class='col-md-12'><code>$path</code> was not found.</div></div>";
-
 
       $menuFile = __DIR__ . "/src/{$sectionDir}/" . MENU_FILE;
       if (file_exists ($menuFile)) {
@@ -146,12 +147,12 @@ $basePath == '/' ? '' : $basePath;
         // Append .md if no file extension is present
         elseif (!preg_match('/\..+$/', $file))
           $file .= '.md';
-        $content = file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
+        $content = file_exists ($file) ? preprocessHtml (compileMD (file_get_contents ($file)), $sectionDir) : $NOT_FOUND;
         ?>
         <div class="row">
           <div id="sidebar" class="col-md-3">
             <div class="sidebar-nav">
-              <?= navMenu (compileMD (file_get_contents ($menuFile)), $sectionDir) ?>
+              <?= preprocessHtml (compileMD (file_get_contents ($menuFile)), $sectionDir) ?>
             </div>
             <!--/.well -->
           </div>
@@ -168,7 +169,7 @@ $basePath == '/' ? '' : $basePath;
       }
       else {
         $file = __DIR__ . "/src$path.md";
-        echo file_exists ($file) ? compileMD (file_get_contents ($file)) : $NOT_FOUND;
+        echo file_exists ($file) ? preprocessHtml (compileMD (file_get_contents ($file)), $sectionDir) : $NOT_FOUND;
       }
       ?>
 <!--      <div class="footer pull-right">-->
@@ -187,7 +188,7 @@ $basePath == '/' ? '' : $basePath;
         // Create label for all languages except PHP
         .attr ('lang', function () {
           var v = $ (this).find ('code').attr ('class').replace (/\s*language-/g, '');
-          return v == 'php' ? null : v[0].toUpperCase () + v.substr (1);
+          return v == 'php' ? null : v;
         });
     </script>
     <script src="assets/js/prism.min.js"></script>
