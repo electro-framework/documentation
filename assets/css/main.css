@@ -255,11 +255,14 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 }
 
 .sidebar-nav li {
+  /* style for lines with and without links */
   font-size: 13px;
+  padding: 2px 0;
+  cursor: default;
 }
 
 .sidebar-nav li > a {
-  padding: 2px 0;
+  padding: 0;
 }
 
 .sidebar-nav li > a:hover,
