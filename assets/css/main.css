@@ -1,3 +1,8 @@
+* {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
 body {
   padding-top: 71px;
   font-family: 'Exo 2', sans-serif;
@@ -301,6 +306,35 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
   margin: 20px 0;
 }
 
+/*-------------------------------
+  SOURCE CODE
+-------------------------------*/
+
+pre {
+  position: relative;
+  /*border: 1px solid #EEE;*/
+  border: none;
+  border-radius: 0;
+  background: #F8F8F8 !important;
+  margin: 2.25em 0 !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 0.85em !important;
+}
+
+blockquote pre {
+  margin: 0 !important;
+}
+
+pre > code {
+  padding: 1em;
+  overflow: auto;
+  width: 100%;
+  line-height: inherit;
+  font-size: inherit;
+  display: block;
+}
+
 code {
   font-family: 'Source Code Pro', monospace !important;
   font-weight: 300;
@@ -315,40 +349,25 @@ code {
   border: 1px solid #E0E0E0;
 }
 
-pre {
-  /*border: 1px solid #EEE;*/
-  border: none;
-  padding-top: 15px !important;
-  padding-bottom: 15px !important;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 2.25em 0 !important;
-  border-radius: 0;
-  background: #F8F8F8 !important;
-}
+/*-------------------------------
+  LINE NUMBERS
+-------------------------------*/
 
-blockquote pre {
-  margin: 0 !important;
-}
-
-code[class*=language-] .line-numbers-rows, pre[class*=language-] .line-numbers-rows {
-  background: #f0f2f1;
-  padding: 15px 0;
-  top: -18px;
-  line-height: 1.5;
-  width: 3em;
-}
-
-pre[class*=language-] {
-  padding-left: 4.5em !important;
+pre.line-numbers {
+  padding-left: 3em !important;
 }
 
 .line-numbers-rows {
+  margin:  0 3.8em;
+  padding: 1em 0;
+  left: -3.8em;
+  width: 2.6em;
+  background: #f0f2f1;
+  line-height: 1.5;
   border-right-color: #e8e8e8 !important;
-  left: -4.5em !important;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows > span::before {
   content: counter(linenumber);
   color: #BBB !important;
   display: block;
@@ -356,8 +375,11 @@ pre[class*=language-] {
   text-align: right;
 }
 
-/* Language label */
-pre[lang]:before {
+/*-------------------------------
+  LANGUAGE LABEL
+-------------------------------*/
+
+pre[lang]::before {
   content:          attr(lang);
   color:            #aaa;
   background-color: #f2f2f2;

@@ -192,5 +192,24 @@ function preprocessHtml ($src, $baseURL)
         });
     </script>
     <script src="assets/js/prism.min.js"></script>
+    <script>
+      Prism.hooks.add ('complete', function (env) {
+        if (!env.code) return;
+
+        var lnumbers = env.element.querySelector ('.line-numbers-rows');
+        if (lnumbers) {
+          // Hide the line numbers when there is only one.
+          if (lnumbers.children.length == 1) {
+            lnumbers.remove ();
+            env.element.parentElement.className = env.element.parentElement.className.replace (/line-numbers/, '');
+          }
+          else {
+            // Move the line numbers container into the PRE element, so that scrolling doesn't affect it.
+            lnumbers.remove();
+            env.element.parentElement.appendChild (lnumbers);
+          }
+        }
+      });
+    </script>
   </body>
 </html>
