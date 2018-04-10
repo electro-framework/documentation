@@ -45,16 +45,30 @@ function compileMD ($src)
   return $text;
 }
 
-function preprocessHtml ($src, $baseURL)
+function preprocessSidebar ($src, $baseURL)
 {
   $indices = implode ('|', array_map('preg_quote', INDEX_FILES));
+
   return preg_replace ([
     '%<ul>%',                         // apply CSS classes to UL elements
-    '%<a href="(.+)"%',               // prepend the base URL
-    '%<img src="(.+)"%',              // prepend the base URL
+    '%<a href="(.+)"%',               // prepend the base URL to links
     "%<a href=\"(.*?)/($indices)\"%"  // remove names of index files (ex: 'index.md')
   ], [
     '<ul class="nav nav-list">',
+    "<a href=\"$baseURL/$1\"",
+    "<a href=\"$1\"",
+  ], $src);
+}
+
+function preprocessContent ($src, $baseURL)
+{
+  $indices = implode ('|', array_map('preg_quote', INDEX_FILES));
+
+  return preg_replace ([
+    '%<a href="(.+)"%',               // prepend the base URL to links
+    '%<img src="(.+)"%',              // prepend the base URL to images
+    "%<a href=\"(.*?)/($indices)\"%"  // remove names of index files (ex: 'index.md')
+  ], [
     "<a href=\"$baseURL/$1\"",
     "<img src=\"$baseURL/$1\"",
     "<a href=\"$1\"",
@@ -115,6 +129,9 @@ function preprocessHtml ($src, $baseURL)
               <li<?= $sectionDir == 'community' ? ' class="active"' : '' ?>>
                 <a href="community">Community</a>
               </li>
+              <li<?= $sectionDir == 'marketplace' ? ' class="active"' : '' ?>>
+                <a href="marketplace">Marketplace</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -144,12 +161,12 @@ function preprocessHtml ($src, $baseURL)
         // Append .md if no file extension is present
         elseif (!preg_match('/\..+$/', $file))
           $file .= '.md';
-        $content = file_exists ($file) ? preprocessHtml (compileMD (file_get_contents ($file)), $sectionDir) : $NOT_FOUND;
+        $content = file_exists ($file) ? preprocessContent (compileMD (file_get_contents ($file)), $sectionDir) : $NOT_FOUND;
         ?>
-        <div class="row">
+        <div class="row no-gutter">
           <div id="sidebar" class="col-md-3">
             <div class="sidebar-nav">
-              <?= preprocessHtml (compileMD (file_get_contents ($menuFile)), $sectionDir) ?>
+              <?= preprocessSidebar (compileMD (file_get_contents ($menuFile)), $sectionDir) ?>
             </div>
             <!--/.well -->
           </div>
@@ -166,7 +183,7 @@ function preprocessHtml ($src, $baseURL)
       }
       else {
         $file = __DIR__ . "/src$path.md";
-        echo file_exists ($file) ? preprocessHtml (compileMD (file_get_contents ($file)), $sectionDir) : $NOT_FOUND;
+        echo file_exists ($file) ? preprocessContent (compileMD (file_get_contents ($file)), $sectionDir) : $NOT_FOUND;
       }
       ?>
 <!--      <div class="footer pull-right">-->

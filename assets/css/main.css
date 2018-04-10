@@ -1,14 +1,26 @@
+:root {
+  --top-bar-height:  91px; /* Can't be < 91px unless the LI > A padding is reduced */
+  --top-band-height: 10px;
+  --top-bar-adjust:  34px; /* Must be <= 34px */
+  --theme-color:     #7278a1;
+}
+
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left:  0;
+}
+
 * {
-  text-rendering: optimizeLegibility !important;
+  text-rendering:         optimizeLegibility !important;
   -webkit-font-smoothing: subpixel-antialiased !important;
 }
 
 body {
-  padding-top: 71px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 1.5em;
+  padding-top:      calc(var(--top-bar-height) - var(--top-bar-adjust) + var(--top-band-height));
+  font-family:      'Roboto', sans-serif;
+  font-weight:      300;
+  font-size:        15px;
+  line-height:      1.5em;
   background-color: #FFF;
 }
 
@@ -17,12 +29,12 @@ body {
 }
 
 blockquote {
-  border-right: 1px solid #FAEBCC;
-  border-top: 1px solid #FAEBCC;
-  border-bottom: 1px solid #FAEBCC;
-  border-left: 8px solid #FAEBCC;
+  border-right:     1px solid #FAEBCC;
+  border-top:       1px solid #FAEBCC;
+  border-bottom:    1px solid #FAEBCC;
+  border-left:      8px solid #FAEBCC;
   background-color: #fcf8e3;
-  font-size: 13px;
+  font-size:        13px;
 }
 
 code {
@@ -30,7 +42,7 @@ code {
 }
 
 a, a:hover, a:focus {
-  color: #008cb3;
+  color:            #008cb3;
   background-color: transparent;
 }
 
@@ -39,11 +51,10 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  /*font-family: helvetica neue, Helvetica, sans-serif;*/
   font-family: 'Roboto', sans-serif;
-  color: #000;
+  color:       #000;
   font-weight: 300;
-  margin: 1em 0 1em;
+  margin:      1em 0 1em;
 }
 
 h4, h5, h6 {
@@ -56,65 +67,65 @@ h1, h2 {
 
 /* When scrollingg to anchors, offset the anchor from the page top by X pixels */
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-  margin-top: -90px;
-  padding-top: calc(90px + 1em);
+  margin-top:  calc(-1 * var(--top-bar-height));
+  padding-top: calc(var(--top-bar-height) + 1em);
 }
 
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
-  margin-top: 0;
+  margin-top:  0;
   padding-top: 0;
 }
 
-
 h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
 h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
-  padding-top: 90px !important;
+  padding-top: var(--top-bar-height) !important;
 }
-
 
 /*-------------------------------
   MAIN MENU
 -------------------------------*/
 
 #mainMenu {
-  border: none;
-  outline: none;
-  padding: 5px 0;
-  color: #666;
-  border-top: 10px solid #7278a1;
+  border:           none;
+  outline:          none;
+  padding:          5px 0 0;
+  color:            #666;
+  border-top:       var(--top-band-height) solid var(--theme-color);
   background-color: hsl(224, 21%, 98%);
-  border-bottom: 1px solid #EEE;
-  min-height: 71px;
+  border-bottom:    1px solid #EEE;
+  /* Use min-height to make the menu responsive */
+  min-height:       calc(var(--top-bar-height) + var(--top-band-height) - var(--top-bar-adjust));
 }
 
 .theme2 #mainMenu,
 #mainMenu[data-scroll="1"] {
-  box-shadow: 0 1px 3px #d4d8e3;
+  box-shadow:    0 1px 3px #d4d8e3;
   border-bottom: none;
 }
 
 #mainMenu .navbar-nav > li > a {
   text-transform: uppercase;
-  color: inherit;
-  font-size: 13px;
-  font-weight: 300;
-  border-bottom: 1px solid transparent;
+  color:          inherit;
+  font-size:      13px;
+  font-weight:    300;
+  border-bottom:  1px solid transparent;
 }
 
 #mainMenu .navbar-nav > li.active > a {
-  font-weight: 600;
+  font-weight:   600;
+  border-bottom: 1px solid var(--theme-color);
 }
 
 #mainMenu .navbar-nav > .active > a,
 #mainMenu .navbar-nav > .active > a:focus,
 #mainMenu .navbar-nav > .active > a:hover {
-  color: inherit;
+  color:            inherit;
   background-color: transparent;
 }
 
 #mainMenu .navbar-nav > li > a:focus,
 #mainMenu .navbar-nav > li > a:hover {
-  color: inherit;
+  color:         inherit;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -128,7 +139,7 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 
 .navbar-toggle {
   position: absolute;
-  right: 0;
+  right:    0;
 }
 
 .navbar-toggle:hover,
@@ -142,21 +153,21 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 
 .navbar-brand {
   padding-right: 0;
-  padding-left: 30px;
-  white-space: nowrap;
+  padding-left:  30px;
+  white-space:   nowrap;
 }
 
 .navbar-brand span {
-  font-size: 20px;
-  color: #666;
-  font-weight: 300;
+  font-size:      20px;
+  color:          #666;
+  font-weight:    300;
   text-transform: uppercase;
 }
 
 .navbar-brand i {
-  color: #666;
+  color:        #666;
   margin-right: 10px;
-  font-size: 20px;
+  font-size:    20px;
 }
 
 @media (max-width: 767px) {
@@ -192,19 +203,19 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 }
 
 .index-page #mainMenu {
-  position: relative;
-  background: transparent;
-  outline: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  padding-top: 15px;
+  position:      relative;
+  background:    transparent;
+  outline:       none;
+  border:        none;
+  color:         rgba(255, 255, 255, 0.6);
+  padding-top:   15px;
   margin-bottom: -15px;
-  box-shadow: none;
+  box-shadow:    none;
 }
 
 .index-page #mainMenu .navbar-nav > li.active > a {
-  color: #FFF;
-  font-weight: inherit;
+  color:         #FFF;
+  font-weight:   inherit;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -234,9 +245,11 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 -------------------------------*/
 
 .sidebar-nav {
-  padding: 5px 30px;
-  line-height: 1.2em;
-  margin-top: 10px;
+  padding:      5px 30px;
+  line-height:  1.2em;
+  margin-top:   10px;
+  border-right: 1px solid #EEE;
+  margin-right: -1px; /* merge border with the one from #workspace */
 }
 
 .sidebar-nav h1 {
@@ -244,14 +257,14 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 }
 
 .sidebar-nav h2 {
-  margin: 17px 0 12px 0;
-  cursor: default;
-  font-weight: 500;
+  margin:         17px 0 12px 0;
+  cursor:         default;
+  font-weight:    500;
   text-transform: uppercase;
-  color: #444;
-  font-size: 14px;
+  color:          #444;
+  font-size:      14px;
   padding-bottom: 10px;
-  border-bottom: 1px dashed #DDD;
+  border-bottom:  1px dashed #DDD;
 }
 
 .sidebar-nav h2:first-of-type {
@@ -265,8 +278,8 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 .sidebar-nav li {
   /* style for lines with and without links */
   font-size: 13px;
-  padding: 2px 0;
-  cursor: default;
+  padding:   2px 0;
+  cursor:    default;
 }
 
 .sidebar-nav li > a {
@@ -276,7 +289,7 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 .sidebar-nav li > a:hover,
 .sidebar-nav li > a:focus,
 .sidebar-nav li.active > a {
-  color: #C88;
+  color:            #C88;
   background-color: transparent;
 }
 
@@ -285,7 +298,7 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 }
 
 .sidebar-nav li > ul {
-  margin-left: 15px;
+  margin-left:   15px;
   margin-bottom: 0;
 }
 
@@ -295,11 +308,11 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
 
 #workspace {
   border-left: 1px solid #EEE;
-  padding: 0;
+  padding:     0;
 }
 
 #page {
-  padding: 40px 30px 90px 30px;
+  padding:    30px;
   /*background-color: #FFF;*/
   /*border: 1px solid #e7e7e7;*/
   text-align: justify;
@@ -309,20 +322,24 @@ h1 + h3, h2 + h4, h3 + h5, h4 + h6 {
   margin: 20px 0;
 }
 
+.content strong, .content b {
+  font-weight: 400;
+}
+
 /*-------------------------------
   SOURCE CODE
 -------------------------------*/
 
 pre {
-  position: relative;
+  position:      relative;
   /*border: 1px solid #EEE;*/
-  border: none;
+  border:        none;
   border-radius: 0;
-  background: #F8F8F8 !important;
-  margin: 2.25em 0 !important;
-  padding: 0 !important;
-  line-height: 1.5 !important;
-  font-size: 0.85em !important;
+  background:    #F8F8F8 !important;
+  margin:        1em 0 !important;
+  padding:       0 !important;
+  line-height:   1.5 !important;
+  font-size:     0.85em !important;
 }
 
 blockquote pre {
@@ -330,12 +347,12 @@ blockquote pre {
 }
 
 pre > code {
-  padding: 1em;
-  overflow: auto;
-  width: 100%;
+  padding:     1em;
+  overflow:    auto;
+  width:       100%;
   line-height: inherit;
-  font-size: inherit;
-  display: block;
+  font-size:   inherit;
+  display:     block;
 }
 
 code {
@@ -349,7 +366,7 @@ code {
   font-size:  0.88em;
   background: #f8f8f8;
   /*background: transparent;*/
-  border: 1px solid #E0E0E0;
+  border:     1px solid #E0E0E0;
 }
 
 /*-------------------------------
@@ -361,21 +378,21 @@ pre.line-numbers {
 }
 
 .line-numbers-rows {
-  margin:  0 3.8em;
-  padding: 1em 0;
-  left: -3.8em;
-  width: 2.6em;
-  background: #f0f2f1;
-  line-height: 1.5;
+  margin:             0 3.8em;
+  padding:            1em 0;
+  left:               -3.8em;
+  width:              2.6em;
+  background:         #f0f2f1;
+  line-height:        1.5;
   border-right-color: #e8e8e8 !important;
 }
 
 .line-numbers-rows > span::before {
-  content: counter(linenumber);
-  color: #BBB !important;
-  display: block;
+  content:       counter(linenumber);
+  color:         #BBB !important;
+  display:       block;
   padding-right: .8em;
-  text-align: right;
+  text-align:    right;
 }
 
 /*-------------------------------
@@ -385,7 +402,7 @@ pre.line-numbers {
 pre[lang]::before {
   content:          attr(lang);
   color:            #aaa;
-  background-color: #f2f2f2;
+  background-color: #f2f8ff;
   /*background-color: #FDFDFD;*/
   position:         absolute;
   top:              0;
@@ -394,8 +411,8 @@ pre[lang]::before {
   font-family:      'Roboto Mono';
   /*border-radius: 0 0 0 5px;*/
   padding:          5px 1em 4px;
-  border: 1px solid #eeeeee;
-  border-style: none none solid solid;
+  border:           1px solid #eaf0f7;
+  border-style:     none none solid solid;
   text-shadow:      none;
   z-index:          1;
   text-transform:   uppercase;
@@ -406,14 +423,14 @@ pre[lang]::before {
 -------------------------------*/
 
 table {
-  margin: 1.5em 0;
-  font-size: 0.95em;
+  margin:      1.5em 0;
+  font-size:   0.95em;
   line-height: 1.3;
 }
 
 table tr {
   background-color: #fff;
-  border-top: 1px solid #c6cbd1;
+  border-top:       1px solid #c6cbd1;
 }
 
 thead tr {
@@ -426,7 +443,7 @@ table tr:nth-child(2n) {
 
 table th, table td {
   padding: 6px 13px;
-  border: 1px solid #dfe2e5;
+  border:  1px solid #dfe2e5;
 }
 
 table th {
@@ -434,9 +451,9 @@ table th {
 }
 
 table code {
-  border: none;
+  border:     none;
   background: transparent;
-  font-size: 0.94em;
+  font-size:  0.94em;
 }
 
 /*-------------------------------
@@ -452,31 +469,31 @@ table code {
 -------------------------------*/
 
 .home {
-  position: absolute;
-  left: 0;
-  right: 0;
+  position:   absolute;
+  left:       0;
+  right:      0;
   margin-top: -234px; /* overflow the page's top to include space for mobile menu when it opens. */
-  height: 100%;
+  height:     100%;
 }
 
 /* Main marketing message and sign up button */
 #intro {
   /*background: linear-gradient(45deg, #3d4375 0%, #797fab 100%);*/
-  background: linear-gradient(45deg, rgba(61, 67, 117, 0.95) 0%, rgba(121, 127, 171, 0.95) 100%), url(../i/electro9.png) center 35% no-repeat;
+  background:      linear-gradient(45deg, rgba(61, 67, 117, 0.95) 0%, rgba(121, 127, 171, 0.95) 100%), url(../i/electro9.png) center 35% no-repeat;
   background-size: 2200px;
-  color: #FFF;
-  padding: 288px 15px 60px;
-  text-align: center;
+  color:           #FFF;
+  padding:         288px 15px 60px;
+  text-align:      center;
 }
 
 #intro-content {
   margin: 0 auto;
-  width: 900px;
+  width:  900px;
 }
 
 #logo {
   display: block;
-  float: left;
+  float:   left;
 
 }
 
@@ -485,29 +502,29 @@ table code {
   /*margin-left: 30px;;*/
   /*text-align: left;*/
   vertical-align: middle;
-  margin-top: 30px;
+  margin-top:     30px;
 }
 
 #intro h1 {
-  display: inline-block;
-  color: #FFF;
-  font-size: 100px;
-  line-height: 1;
-  margin-bottom: 20px;
-  margin-top: 30px;
-  padding-left: 15px;
-  font-weight: 100;
-  font-family: helvetica neue, Helvetica, sans-serif;
+  display:        inline-block;
+  color:          #FFF;
+  font-size:      100px;
+  line-height:    1;
+  margin-bottom:  20px;
+  margin-top:     30px;
+  padding-left:   15px;
+  font-weight:    100;
+  font-family:    helvetica neue, Helvetica, sans-serif;
   letter-spacing: 9px;
-  text-shadow: 0 0 10px #fff;
+  text-shadow:    0 0 10px #fff;
 }
 
 #intro .lead {
-  font-size: 24px;
-  line-height: 1.25;
-  font-weight: 100;
+  font-size:      24px;
+  line-height:    1.25;
+  font-weight:    100;
   letter-spacing: 2px;
-  font-family: helvetica neue, Helvetica, sans-serif;
+  font-family:    helvetica neue, Helvetica, sans-serif;
 }
 
 #callToAction {
@@ -516,18 +533,19 @@ table code {
 }
 
 #intro .btn {
-  padding: 14px 24px;
+  padding:          14px 24px;
   background-color: #6970A7;
-  border-color: #4F557D;
-  min-width: 162px;
-  margin-right: 15px;
+  border-color:     #4F557D;
+  min-width:        162px;
+  margin-right:     15px;
 }
+
 #intro .btn-primary {
   background-color: #313853;
 }
 
 #homeContent {
-  padding-top: 50px;
+  padding-top:    50px;
   padding-bottom: 50px;
 }
 
@@ -536,7 +554,7 @@ table code {
 }
 
 #homeContent h4 {
-  font-weight: 400;
+  font-weight:   400;
   margin-bottom: 25px;
 }
 
@@ -546,20 +564,19 @@ table code {
 
 .theme2 #sidebar > .sidebar-nav {
   background-color: #FFF;
-  position: fixed;
-  left: 0;
-  top: 71px;
-  bottom: 0;
-  margin-top: 0;
-  width: 240px;
-  overflow: auto;
-  border-right: 1px solid #EEE;
+  position:         fixed;
+  left:             0;
+  top:              71px;
+  bottom:           0;
+  margin-top:       0;
+  width:            240px;
+  overflow:         auto;
+  border-right:     1px solid #EEE;
 }
 
 .theme2 .navbar-brand {
   padding-left: 25px;
 }
-
 
 body.theme2:not(.index-page) {
   background-color: #f3f4f7;
@@ -567,19 +584,19 @@ body.theme2:not(.index-page) {
 }
 
 .theme2 #page {
-  box-shadow: 0 1px 0 #c5cad8, 0 2px 3px #d4d8e3;
+  box-shadow:       0 1px 0 #c5cad8, 0 2px 3px #d4d8e3;
   background-color: #FFF;
 }
 
 .theme2 #workspace {
-  border: none;
+  border:      none;
   padding-top: 25px;;
 }
 
 .theme2:not(.index-page) .navbar-header {
   position: absolute;
-  left: 6px;
-  right: 0;
+  left:     6px;
+  right:    0;
 }
 
 @media (max-width: 767px) {
