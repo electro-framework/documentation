@@ -32,8 +32,8 @@
   * Image Thumbnails
   * Using Bower
 * Creating Services
-* Configuring
-* Routing
+* [Configuring](developing-applications/configuring.md)
+* [Routing](developing-applications/routing.md)
 * Controllers
 * Views
 * View Models
